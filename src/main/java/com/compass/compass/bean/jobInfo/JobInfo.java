@@ -1,4 +1,4 @@
-package com.compass.compass.bean;
+package com.compass.compass.bean.jobInfo;
 
 public class JobInfo {
     private long id;

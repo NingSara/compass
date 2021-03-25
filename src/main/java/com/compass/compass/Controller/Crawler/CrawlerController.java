@@ -1,4 +1,4 @@
-package com.compass.compass.Controller;
+package com.compass.compass.Controller.Crawler;
 
 import com.mysql.cj.jdbc.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
