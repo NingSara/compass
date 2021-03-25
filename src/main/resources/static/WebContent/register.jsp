@@ -103,7 +103,7 @@
 						<div 
 						style=
 						"border-radius:25px;background-color:#26AE61;color:#fff;margin:10px 0px 0px 5px;height:30px;width:100px;padding:5px 20px 0px 20px">
-							<a href="#" class="loginbutton">登录/注册</a>
+							<a href="login.jsp" class="loginbutton">登录/注册</a>
 						</div>
 					</li>
 				</ul> 
