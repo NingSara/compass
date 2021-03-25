@@ -132,7 +132,9 @@
 			</div> 
 		</div> 
 	</div> 
-	
+	<!--导航结束-->
+
+<!--标题-->
 	<div class="container bodyup" style="width:100%;margin-bottom:10px">
         <div class="row">
         	<div class="col-md-7 col-xs-6">
@@ -143,10 +145,13 @@
         	</div>
         </div>
 	</div>
-	
+<!--标题结束-->	
+
+
     <div style="">
     	<div class="container" style="padding-bottom:50px">
     		<div class="row bodysearch" style="margin-bottom:10px">
+                <!--搜索栏表单-->
     			<form>
     			<div class="col-md-5 col-xs-12" style="margin-bottom:5px">
     				<input type="text" class="form-control" placeholder="请输入职位或公司" style="height:40px">
@@ -155,6 +160,7 @@
     				<input type="text" class="form-control"  placeholder="请输入地点" style="height:40px">
     			</div>
     			<div class="col-md-2 col-xs-12">
+                    <!--搜索栏按钮-->
     				<button type="button" class="btn btn-block" style="background-color:#3CB371;height:40px;font-size: 20px;float:right">
 				  		<span class="glyphicon glyphicon-search" style="color:#fff;height:40px"></span>
 				  	</button>
@@ -162,6 +168,7 @@
     			</form>
     		</div>
     		
+            <!--一条搜索结果-->
     		<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px;padding-bottom:15px">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
@@ -189,7 +196,8 @@
     				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
     			</div>
     		</div>
-    		
+    		<!--一条搜索结果结束。下面类似-->
+
 			<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
@@ -320,6 +328,7 @@
     				<span class="label label-primary" style="font-size:15px">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
     			</div>
     		</div>
+            <!--翻页键部分-->
     		<div class="row" style="margin-top:20px;">
     			<nav aria-label="Page navigation">
     				<ul class="pager">
