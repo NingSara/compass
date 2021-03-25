@@ -13,34 +13,6 @@
     <link rel="stylesheet" type="text/css" href="./css/navibar.css"/>
     <link rel="stylesheet" type="text/css" href="./css/footer.css"/>
 	<style type="text/css"> 
-		/* body{padding-top:100px}
-		.form-control:focus{
-	    	border-color:#3CB371;
-	    	box-shadow:none;
-		}
-		.navbar .nav > li >a:hover{
-			color:#26AE61;
-		}
-		.navbar .nav >li >a:active{
-			color:#26AE61;
-			
-		}
-		.loginbutton:link{
-			color:#fff;
-			text-decoration:none;
-		}
-		.loginbutton:visited{
-			color:#fff;
-			text-decoration:none;
-		}
-		.loginbutton:hover{
-			color:#fff;
-			text-decoration:none;
-		}
-		.loginbutton:active{
-			color:#fff;
-			text-decoration:none;
-		} */
 		.block11{
 			padding-bottom:50px;
 		}
