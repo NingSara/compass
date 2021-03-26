@@ -333,6 +333,113 @@
     				<span class="label label-primary" style="font-size:15px">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
     			</div>
     		</div>
+
+            <div class="row searchresult">
+    			<div class="col-md-4 col-xs-12" style="">
+    				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
+    					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
+    				</div>
+    				<div style="float:left;margin-left:30px;max-width:220px">
+    					<h3><a href="#" class="greenlink">输入职位</a></h3>
+    					<div style="color:#A9A9A9;">输入公司名</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			style="font-size:15px;color:#A9A9A9;">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			style="font-size:15px;color:#A9A9A9;">
+    				<div 
+						style=
+						"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+							薪资：10k-12k
+					</div>
+    			</div>
+    			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			style="font-size:15px;">
+    				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    			</div>
+    		</div>
+    		
+			<div class="row searchresult">
+    			<div class="col-md-4 col-xs-12" style="">
+    				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
+    					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
+    				</div>
+    				<div style="float:left;margin-left:30px;max-width:220px">
+    					<h3><a href="#" class="greenlink">输入职位</a></h3>
+    					<div style="color:#A9A9A9;">输入公司名</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" style="font-size:15px;color:#A9A9A9;">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" style="font-size:15px;color:#A9A9A9;">
+    				<div 
+						style=
+						"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+							薪资：10k-12k
+					</div>
+    			</div>
+    			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" style="font-size:15px;">
+    				<span class="label label-primary" style="font-size:15px">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    			</div>
+    		</div>
+
+            <div class="row searchresult">
+    			<div class="col-md-4 col-xs-12" style="">
+    				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
+    					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
+    				</div>
+    				<div style="float:left;margin-left:30px;max-width:220px">
+    					<h3><a href="#" class="greenlink">输入职位</a></h3>
+    					<div style="color:#A9A9A9;">输入公司名</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			style="font-size:15px;color:#A9A9A9;">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			style="font-size:15px;color:#A9A9A9;">
+    				<div 
+						style=
+						"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+							薪资：10k-12k
+					</div>
+    			</div>
+    			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			style="font-size:15px;">
+    				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    			</div>
+    		</div>
+    		
+			<div class="row searchresult">
+    			<div class="col-md-4 col-xs-12" style="">
+    				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
+    					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
+    				</div>
+    				<div style="float:left;margin-left:30px;max-width:220px">
+    					<h3><a href="#" class="greenlink">输入职位</a></h3>
+    					<div style="color:#A9A9A9;">输入公司名</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" style="font-size:15px;color:#A9A9A9;">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    			</div>
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" style="font-size:15px;color:#A9A9A9;">
+    				<div 
+						style=
+						"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+							薪资：10k-12k
+					</div>
+    			</div>
+    			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" style="font-size:15px;">
+    				<span class="label label-primary" style="font-size:15px">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    			</div>
+    		</div>
+
             <!--翻页键部分-->
     		<div class="row" style="margin-top:20px;">
     			<nav aria-label="Page navigation">
