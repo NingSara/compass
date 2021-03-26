@@ -156,7 +156,7 @@
         	</div>
         </div>
 	</div>
-	
+	<!-- 下面是与搜索结果页面相同的一个条目-->
 	<div class="container" style="padding-bottom:20px;">
 		<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px;padding-bottom:15px">
     			<div class="col-md-4 col-xs-12">
@@ -187,13 +187,17 @@
     	</div>
     </div>
     
+    <!--下面是详细信息。其中，每个条目标题的颜色依次为：蓝、绿、蓝、绿......即第一个是蓝，下面依次选择绿色和蓝色。颜色只和顺序对应，不和具体标题内容对应-->
     <div class="container"  style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:40px;padding-bottom:20px">
+        <!--一个详细内容条目-->
     	<div class="row" style="margin-top:10px">
     		<div class="col-md-12 col-xs-12" style="padding-left:10px;">
     			<div style="float:left;margin:10px;padding-top:13px;">
+                    <!--需要更改颜色的地方1-->
     				<span class="glyphicon glyphicon-book" style="color:rgb(77,173,245);height:40px;font-size: 30px"></span>
     			</div>
     			<div class="detailblock">
+                    <!--需要更改颜色的地方2-->
     				<h3>职位<span style="color:rgb(77,173,245);">介绍</span></h3>
     			</div>
     		</div>
@@ -212,7 +216,8 @@
     			</div>
     		</div>
     	</div>
-    	
+    	<!--一个详细内容条目结束。下面类似-->
+
     	<div class="row" style="margin-top:10px">
     		<div class="col-md-12 col-xs-12" style="padding-left:10px;">
     			<div style="float:left;margin:10px;padding-top:13px;">
