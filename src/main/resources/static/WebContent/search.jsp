@@ -173,10 +173,11 @@
     			</form>
     		</div>
     		
-            <!--一条搜索结果-->
+            <!--一条搜索结果。注意搜索结果前面的手指图标颜色依次为:蓝、绿、蓝、绿...颜色变化只与条目顺序有关-->
     		<div class="row searchresult">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
+                        <!--需要改变手指图标颜色的地方-->
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
     				<div style="float:left;margin-left:30px;max-width:220px">
