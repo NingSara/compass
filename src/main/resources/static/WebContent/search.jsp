@@ -67,6 +67,11 @@
 		.alignblock{
 			padding-left:39px
 		}
+        .searchresult{
+			box-shadow: 0px 0px 5px 5px #F5F5F5;
+			margin-top:20px;
+			padding-bottom:15px;
+		}
 		
 		
     </style>
@@ -148,7 +153,7 @@
 <!--标题结束-->	
 
 
-    <div style="">
+    <div style="min-height:400px">
     	<div class="container" style="padding-bottom:50px">
     		<div class="row bodysearch" style="margin-bottom:10px">
                 <!--搜索栏表单-->
@@ -169,7 +174,7 @@
     		</div>
     		
             <!--一条搜索结果-->
-    		<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px;padding-bottom:15px">
+    		<div class="row searchresult">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
@@ -198,7 +203,7 @@
     		</div>
     		<!--一条搜索结果结束。下面类似-->
 
-			<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px">
+			<div class="row searchresult">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
@@ -223,7 +228,7 @@
     			</div>
     		</div>
     		
-    		<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px;padding-bottom:15px">
+    		<div class="row searchresult">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
@@ -251,7 +256,7 @@
     			</div>
     		</div>
     		
-			<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px">
+			<div class="row searchresult">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
@@ -276,7 +281,7 @@
     			</div>
     		</div>
     		
-    		<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px;padding-bottom:15px">
+    		<div class="row searchresult">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
@@ -304,7 +309,7 @@
     			</div>
     		</div>
     		
-			<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px">
+			<div class="row searchresult">
     			<div class="col-md-4 col-xs-12" style="">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
