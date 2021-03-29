@@ -96,7 +96,6 @@
 			<div class="collapse navbar-collapse navbar-right" id="navBar"> 
 				<ul class="nav navbar-nav"> 
 					<li><a href="index.jsp" class="barlink">首页</a></li> 
-					<li><a href="search.jsp" class="barlink">开始搜索</a></li> 
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
@@ -117,11 +116,11 @@
 						我的主页<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-						<li><a href="#">个人信息</a></li> 
-						<li><a href="#">职位收藏</a></li> 
-						<li><a href="#">猜你喜欢</a></li> 
-						<li><a href="#">为你推荐</a></li> 
-						</ul> 
+						<li><a href="myinfo.jsp">个人信息</a></li> 
+						<li><a href="markedjobs.jsp">职位收藏</a></li> 
+						<li><a href="guessYouLike.jsp">猜你喜欢</a></li> 
+						<li><a href="recommend.jsp">为你推荐</a></li> 
+						</ul>  
 					</li>
 					<li><a href="#">合作伙伴</a></li> 
 					<li><a href="#">联系我们</a></li>
@@ -144,11 +143,13 @@
         <div class="col-xs-12 col-md-6 block11">
             <h1 style="margin-top:25px">立刻开始</h1>
             <h1 style="margin-bottom:40px">寻找我的工作</h1>
-            <p style="color:#C0C0C0;">Aliquam vestibulum cursus felis. In iaculis iaculis sapien ac condimentum. 
-            Vestibulum congue posuere lacus, id tincidunt nisi porta sit amet. 
-            Suspendisse et sapien varius, pellentesque dui non.</p>
+            <p style="color:#C0C0C0;">
+                You can get the latest employment information in real time here.
+            We use recommendation algorithm to help you find the most suitable job. 
+            Just search jobs immediately or inquire about jobs we recommend for you.
+            </p>
             <div class="row" >
-            	<form class="bs-example bs-example-form" role="form"><!--职位搜索表单-->
+            	<form role="form" action="search.jsp" method="post"><!--职位搜索表单-->
 				  <div class="col-xs-12 col-md-6" style="margin-top:20px">
 				  	<div class="input-group">
             			<span class="input-group-addon" style="height:40px">职位</span>
@@ -162,7 +163,7 @@
         			</div>
 				  </div>
 				  <div class="col-xs-12 col-md-2" style="margin-top:20px">
-				  	<button type="button" class="btn btn-block" style="background-color:#3CB371;height:40px;font-size: 20px"><!--搜索按钮-->
+				  	<button type="submit" class="btn btn-block" style="background-color:#3CB371;height:40px;font-size: 20px"><!--搜索按钮-->
 				  		<span class="glyphicon glyphicon-search" style="color:#fff;height:40px"></span>
 				  	</button>
 				  </div>
@@ -371,10 +372,10 @@
 		</div>
 
 		<div class="col-xs-12 col-md-4" style="margin-top:20px;width:100%;text-align:center">
-			<form class="bs-example bs-example-form" role="form">
+			<form role="form" action="guessYouLike.jsp" method="post">
                 <!--点击该按钮查看所有猜你喜欢的职位-->
 				<button 
-				type="button" class="btn btn-block" 
+				type="submit" class="btn btn-block" 
 				style="background-color:#3CB371;height:40px;width:200px;font-size: 18px;color:#fff;display:block;margin:0 auto">
 				查看更多</button>
 			</form>
@@ -468,10 +469,10 @@
     	</div>
     	</div>
     	<div style="margin-top:20px;width:100%">
-			<form class="bs-example bs-example-form" role="form">
+			<form role="form" action="recommend.jsp" method="post">
                 <!--点击按钮查看所有为你推荐的职位-->
 				<button 
-				type="button" class="btn btn-block" 
+				type="submit" class="btn btn-block" 
 				style="background-color:#3CB371;height:40px;width:200px;font-size: 18px;color:#fff;display:block;margin:0 auto">
 				查看更多</button>
 			</form>
@@ -488,7 +489,8 @@
 					<img src="./img/图标2.png" width="180px">
 				</div>
 				<p style="color:rgb(138,153,179);">
-				Sed consequat sapien faus quam bibendum convallis quis in nulla. Pellentesque volutpat odio eget diam cursus semper.
+				You can get the latest employment information in real time here.
+            We use recommendation algorithm to help you find the most suitable job. 
 				</p>
 			</div>
 			<div class="col-xs-12 col-md-5 aboutus">
