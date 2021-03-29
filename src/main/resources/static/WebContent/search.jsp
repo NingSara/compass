@@ -96,8 +96,7 @@
 			</div> 
 			<div class="collapse navbar-collapse navbar-right" id="navBar"> 
 				<ul class="nav navbar-nav"> 
-					<li><a href="index.jsp" class="barlink">首页</a></li> 
-					<li><a href="search.jsp" class="barlink">开始搜索</a></li> 
+					<li><a href="index.jsp" class="barlink">首页</a></li>  
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
@@ -118,10 +117,10 @@
 						我的主页<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-						<li><a href="#">个人信息</a></li> 
-						<li><a href="#">职位收藏</a></li> 
-						<li><a href="#">猜你喜欢</a></li> 
-						<li><a href="#">为你推荐</a></li> 
+						<li><a href="myinfo.jsp">个人信息</a></li> 
+						<li><a href="markedjobs.jsp">职位收藏</a></li> 
+						<li><a href="guessYouLike.jsp">猜你喜欢</a></li> 
+						<li><a href="recommend.jsp">为你推荐</a></li> 
 						</ul> 
 					</li>
 					<li><a href="#">合作伙伴</a></li> 
@@ -157,7 +156,7 @@
     	<div class="container" style="padding-bottom:50px">
     		<div class="row bodysearch" style="margin-bottom:10px">
                 <!--搜索栏表单-->
-    			<form>
+    			<form action="search.jsp" method="post">
     			<div class="col-md-5 col-xs-12" style="margin-bottom:5px">
     				<input type="text" class="form-control" placeholder="请输入职位或公司" style="height:40px">
     			</div>
@@ -166,7 +165,7 @@
     			</div>
     			<div class="col-md-2 col-xs-12">
                     <!--搜索栏按钮-->
-    				<button type="button" class="btn btn-block" style="background-color:#3CB371;height:40px;font-size: 20px;float:right">
+    				<button type="submit" class="btn btn-block" style="background-color:#3CB371;height:40px;font-size: 20px;float:right">
 				  		<span class="glyphicon glyphicon-search" style="color:#fff;height:40px"></span>
 				  	</button>
     			</div>
@@ -175,7 +174,7 @@
     		
             <!--一条搜索结果。注意搜索结果前面的手指图标颜色依次为:蓝、绿、蓝、绿...颜色变化只与条目顺序有关-->
     		<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
                         <!--需要改变手指图标颜色的地方-->
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
@@ -205,7 +204,7 @@
     		<!--一条搜索结果结束。下面类似-->
 
 			<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
     				</div>
@@ -230,7 +229,7 @@
     		</div>
     		
     		<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
@@ -258,7 +257,7 @@
     		</div>
     		
 			<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
     				</div>
@@ -283,7 +282,7 @@
     		</div>
     		
     		<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
@@ -311,7 +310,7 @@
     		</div>
     		
 			<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
     				</div>
@@ -336,7 +335,7 @@
     		</div>
 
             <div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
@@ -364,7 +363,7 @@
     		</div>
     		
 			<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
     				</div>
@@ -389,7 +388,7 @@
     		</div>
 
             <div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
@@ -417,7 +416,7 @@
     		</div>
     		
 			<div class="row searchresult">
-    			<div class="col-md-4 col-xs-12" style="">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
     				</div>
@@ -468,7 +467,8 @@
 					<img src="./img/图标2.png" width="180px">
 				</div>
 				<p style="color:rgb(138,153,179);">
-				Sed consequat sapien faus quam bibendum convallis quis in nulla. Pellentesque volutpat odio eget diam cursus semper.
+                    You can get the latest employment information in real time here.
+            We use recommendation algorithm to help you find the most suitable job. 
 				</p>
 			</div>
 			<div class="col-xs-12 col-md-5 aboutus">
