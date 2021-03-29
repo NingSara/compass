@@ -264,11 +264,11 @@
 <div style="width:100%;padding-top:20px;padding-bottom:30px">
 	<div class="container">
 		<h1 style="text-align:center">猜你喜欢</h1>
-    	<h5 style="color:#C0C0C0;text-align:center;margin-bottom:30px">专属我的职位选择 发现最合心意的工作</h5>
+    	<h5 style="color:#C0C0C0;text-align:center;margin-bottom:15px">专属我的职位选择 发现最合心意的工作</h5>
     	<div class="row guessrow">
     	
         <!--猜你喜欢中的一个职位卡片-->
-    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px">
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:#26AE61;font-size:50px"></span>
     		</div>
@@ -285,7 +285,7 @@
     	</div>
     	<!--职位卡片结束。下面类似。一共6个卡片-->
 
-    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px">
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(77,173,245);font-size:50px"></span>
     		</div>
@@ -301,7 +301,7 @@
     		</div>
     	</div>
     	
-    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px">
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(29,100,180);font-size:50px"></span>
     		</div>
@@ -319,9 +319,9 @@
     	
     	</div>
     	
-		<div class="row guessrow" style="margin-top:10px">
+		<div class="row guessrow">
 		
-			<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px">
+			<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(128,0,255);font-size:50px"></span>
     		</div>
@@ -337,7 +337,7 @@
     		</div>
     	</div>
     	
-    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px">
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(64,224,208);font-size:50px"></span>
     		</div>
@@ -353,7 +353,7 @@
     		</div>
     	</div>
     	
-    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px">
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(255,128,0);font-size:50px"></span>
     		</div>
@@ -388,13 +388,13 @@
 <div style="background-color:#F9FCFF;width:100%;padding-top:20px;padding-bottom:40px">
 	<div class="container">
 		<h1 style="text-align:center">为你推荐</h1>
-		<h5 style="color:#C0C0C0;text-align:center;margin-bottom:30px">最符合我的能力 量身定制推荐</h5>
+		<h5 style="color:#C0C0C0;text-align:center;margin-bottom:15px">最符合我的能力 量身定制推荐</h5>
 		<div class="row rowrecmen">
 
     	<!--为你推荐中的一个职位卡片-->
     	<div class="col-xs-12 col-md-6" 
     	style=
-    	"box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;background-color:#fff">
+    	"box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;background-color:#fff;margin-top:15px">
     		<div style=
     		"float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:80px;height:80px;text-align:center;padding-top:13px;">
     			<span class="glyphicon glyphicon-fire" style="color:rgb(64,224,208);font-size:55px"></span>
@@ -413,7 +413,7 @@
         <!--职位卡片结束。下面类似。一共有4个卡片-->
     	
     	<div class="col-xs-12 col-md-6" 
-    	style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;background-color:#fff">
+    	style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;background-color:#fff;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:80px;height:80px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-fire" style="color:rgb(255,128,0);font-size:55px"></span>
     		</div>
@@ -430,11 +430,11 @@
     	</div>
     	</div>
     	
-		<div class="row rowrecmen" style="margin-top:15px">
+		<div class="row rowrecmen">
     	
     	<div class="col-xs-12 col-md-6" 
     	style=
-    	"box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;background-color:#fff">
+    	"box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;background-color:#fff;margin-top:15px">
     		<div style=
     		"float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:80px;height:80px;text-align:center;padding-top:13px;">
     			<span class="glyphicon glyphicon-fire" style="color:rgb(29,100,180);font-size:55px"></span>
@@ -452,7 +452,7 @@
     	</div>
     	
     	<div class="col-xs-12 col-md-6" 
-    	style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;background-color:#fff">
+    	style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;background-color:#fff;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:80px;height:80px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-fire" style="color:rgb(251,193,240);font-size:55px"></span>
     		</div>
