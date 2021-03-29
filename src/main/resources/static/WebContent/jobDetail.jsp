@@ -105,8 +105,7 @@
 			</div> 
 			<div class="collapse navbar-collapse navbar-right" id="navBar"> 
 				<ul class="nav navbar-nav"> 
-					<li><a href="index.jsp" class="barlink">首页</a></li> 
-					<li><a href="search.jsp" class="barlink">开始搜索</a></li> 
+					<li><a href="index.jsp" class="barlink">首页</a></li>  
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
@@ -127,10 +126,10 @@
 						我的主页<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-						<li><a href="#">个人信息</a></li> 
-						<li><a href="#">职位收藏</a></li> 
-						<li><a href="#">猜你喜欢</a></li> 
-						<li><a href="#">为你推荐</a></li> 
+						<li><a href="myinfo.jsp">个人信息</a></li> 
+						<li><a href="markedjobs.jsp">职位收藏</a></li> 
+						<li><a href="guessYouLike.jsp">猜你喜欢</a></li> 
+						<li><a href="recommend.jsp">为你推荐</a></li> 
 						</ul> 
 					</li>
 					<li><a href="#">合作伙伴</a></li> 
@@ -159,7 +158,7 @@
 	<!-- 下面是与搜索结果页面相同的一个条目-->
 	<div class="container" style="padding-bottom:20px;">
 		<div class="row" style="box-shadow: 0px 0px 5px 5px #F5F5F5;margin-top:20px;padding-bottom:15px">
-    			<div class="col-md-4 col-xs-12">
+    			<div class="col-md-4 col-xs-12" style="margin-bottom:5px">
     				<div style="float:left;margin:10px;width:70px;height:70px;padding-top:13px">
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
@@ -360,9 +359,9 @@
 	
 	<div class="container">
 	<div class="col-xs-12 col-md-4" style="margin-top:20px;width:100%;text-align:center;">
-			<form class="bs-example bs-example-form" role="form">
+			<form role="form">
 				<button 
-				type="button" class="btn btn-block" 
+				type="submit" class="btn btn-block" 
 				style="background-color:#3CB371;height:40px;width:200px;font-size: 18px;color:#fff;display:block;margin:0 auto">
 				点击收藏</button>
 			</form>
@@ -430,9 +429,9 @@
 		</div>
 
 		<div class="col-xs-12 col-md-4" style="margin-top:20px;width:100%;text-align:center;">
-			<form class="bs-example bs-example-form" role="form">
+			<form role="form" action="similarJobs.jsp" method="post">
 				<button 
-				type="button" class="btn btn-block" 
+				type="submit" class="btn btn-block" 
 				style="background-color:#3CB371;height:40px;width:200px;font-size: 18px;color:#fff;display:block;margin:0 auto">
 				查看更多</button>
 			</form>
@@ -450,7 +449,8 @@
 					<img src="./img/图标2.png" width="180px">
 				</div>
 				<p style="color:rgb(138,153,179);">
-				Sed consequat sapien faus quam bibendum convallis quis in nulla. Pellentesque volutpat odio eget diam cursus semper.
+				You can get the latest employment information in real time here.
+            We use recommendation algorithm to help you find the most suitable job. 
 				</p>
 			</div>
 			<div class="col-xs-12 col-md-5 aboutus">
