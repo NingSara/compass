@@ -180,7 +180,7 @@
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
     				<div style="float:left;margin-left:30px;max-width:220px">
-    					<h3><a href="#" class="greenlink">输入职位</a></h3>
+    					<h3><a href="jobDetail.jsp" class="greenlink">输入职位</a></h3>
     					<div style="color:#A9A9A9;">输入公司名</div>
     				</div>
     			</div>
