@@ -378,7 +378,7 @@
 		<div class="col-xs-12 col-md-4" 
 			style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;margin-top:10px;padding-top:10px;padding-bottom:20px;background-color:#fff">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
-    			<img src="./img/features/img4.png" height=40>
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(29,100,180);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
     			<h3><a href="">输入职位名</a></h3>
@@ -395,7 +395,7 @@
     	<div class="col-xs-12 col-md-4" 
     	style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;margin-top:10px;padding-top:10px;padding-bottom:20px;background-color:#fff">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
-    			<img src="./img/features/img5.png" height=40>
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(64,224,208);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
     			<h3><a href="">输入职位名</a></h3>
@@ -412,7 +412,7 @@
     	<div class="col-xs-12 col-md-4" 
     	style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-top:10px;padding-top:10px;padding-bottom:20px;;background-color:#fff">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
-    			<img src="./img/features/img6.png" height=40>
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(255,128,0);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
     			<h3><a href="">输入职位名</a></h3>
