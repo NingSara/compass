@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://121.5.246.208:3306/exercise
+    username: root
+    password: Chen/Ning20
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    view:
+      prefix: /WEB-INF/
+#  thymeleaf:
+#    prefix: classpath:/templates/html/
