@@ -1,5 +1,8 @@
 package com.compass.compass.bean.jobInfo;
 
+/**
+ * @author cn
+ */
 public class Position {
     /**职位在数据库的索引 */
     private long positionIndex;
@@ -10,7 +13,7 @@ public class Position {
     /**职位类型类型*/
     private String type;
     /**学历要求 */
-    private String major;
+    private String degree;
     /**技能要求*/
     private String require;
     /**工作城市*/
@@ -52,12 +55,12 @@ public class Position {
         this.type = type;
     }
 
-    public String getMajor() {
-        return major;
+    public String getDegree() {
+        return degree;
     }
 
-    public void setMajor(String major) {
-        this.major = major;
+    public void setDegree(String degree) {
+        this.degree = degree;
     }
 
     public String getRequire() {
@@ -99,7 +102,7 @@ public class Position {
                 ", jobId=" + jobId +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                ", major='" + major + '\'' +
+                ", degree='" + degree + '\'' +
                 ", require='" + require + '\'' +
                 ", place='" + place + '\'' +
                 ", wage='" + wage + '\'' +

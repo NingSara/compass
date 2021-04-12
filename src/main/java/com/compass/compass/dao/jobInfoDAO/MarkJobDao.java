@@ -3,6 +3,9 @@ package com.compass.compass.dao.jobInfoDAO;
 import com.compass.compass.dao.DAO;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author cn
+ */
 @Repository
 public class MarkJobDao extends DAO {
 

@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author cn
+ */
 public abstract class DAO {
     @Autowired
     public HikariDataSource dataSource;

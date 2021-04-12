@@ -9,14 +9,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- *
+ * @author cn
  */
-@Component//按照名字，理应是controller，但是由于可能没有对请求响应，所以暂时只是一个component
 public interface RecommendServlet {
-
+    //按照名字，理应是controller，但是由于可能没有对请求响应，所以暂时只是一个component
     public List<UserBaseRecommendLink> getUserBaseRecommends(User user);
 
-    public List<JobBaseRecommendLink> getJobBaseRecommends(String relateJobId);
+    public List<JobBaseRecommendLink> getJobBaseRecommends(long relateJobId);
 
     public List<JobBaseRecommendLink> getJobBaseRecommends(JobInfo jobInfo);
 }

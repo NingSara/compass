@@ -16,7 +16,7 @@ class CompassApplicationTests {
     @Test
     void contextLoads() throws SQLException {
         dataSource.getConnection();
-        
+
     }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 响应用户的收藏和取消收藏操作
+ * @author cn
  */
 @Controller
 public class MarkJobServlet {

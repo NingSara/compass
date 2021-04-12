@@ -5,6 +5,9 @@ import com.compass.compass.dao.DAO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author cn
+ */
 @Repository
 public class InsertJobInfoDao extends DAO {
 

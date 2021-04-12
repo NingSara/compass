@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+/**
+ * @author cn
+ */
 @Controller
 public class UserInfoServlet {
     /*
-    user info需要分为查看的页面和修改的页面
+    TODO user info需要分为查看的页面和修改的页面
      */
 
     @RequestMapping(value = "/myInfo",method = RequestMethod.GET)

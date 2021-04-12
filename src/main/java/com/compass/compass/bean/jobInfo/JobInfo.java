@@ -8,30 +8,14 @@ import java.util.List;
  * 在这里需要定义job和position对应的中文的说法
  * job指一篇显示招聘信息的网页中出现的内容，为某一公司的一条【招聘信息】对应【工作】
  * position代表这个网页中出现的具体的【岗位或职位】
+ * @author cn
  */
-public class JobInfo {
-    /**在数据库中的id*/
-    private long id;
-    /**招聘信息标题*/
-    private String title;
+public class JobInfo extends JobInfoDigest{
     /**
      * 招聘信息来源
      * 如：时空视点。。。
      */
     private String originalUrl;
-    /**
-     * 招聘类型
-     * 如：校园招聘、社会招聘等
-     * */
-    private String type;
-    /**招聘起始时间*/
-    //TODO 起始时间和截止时间是否需要换成java的time类型
-    private String beginDate;
-    /**
-     * 招聘截止时间
-     * 可能为空
-     * */
-    private String endDate;
     /**
      * 简历投递的邮箱地址
      * 可能为空
@@ -44,7 +28,7 @@ public class JobInfo {
     private String employUrl;
     /**
      * 公司名
-     * */
+     */
     private String companyName;
     /**福利*/
     private String welfare;
@@ -62,12 +46,8 @@ public class JobInfo {
     public JobInfo(long id, String title, String originalUrl, String type,
                    String beginDate, String endDate, String deliverUrl, String employUrl,
                    String companyName,String welfare, String positionText, List<Position> positions) {
-        this.id = id;
-        this.title = title;
+        super(id,title,type,beginDate,endDate);
         this.originalUrl = originalUrl;
-        this.type = type;
-        this.beginDate = beginDate;
-        this.endDate = endDate;
         this.deliverUrl = deliverUrl;
         this.employUrl = employUrl;
         this.companyName = companyName;
@@ -76,52 +56,12 @@ public class JobInfo {
         this.positions = positions;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getOriginalUrl() {
         return originalUrl;
     }
 
     public void setOriginalUrl(String originalUrl) {
         this.originalUrl = originalUrl;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getBeginDate() {
-        return beginDate;
-    }
-
-    public void setBeginDate(String beginDate) {
-        this.beginDate = beginDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public String getDeliverUrl() {
