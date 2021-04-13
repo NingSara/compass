@@ -2,8 +2,9 @@ package com.compass.compass.Controller;
 
 import com.compass.compass.Controller.recommend.RecommendServlet;
 import com.compass.compass.bean.jobInfo.JobInfo;
+import com.compass.compass.bean.jobInfo.Position;
 import com.compass.compass.bean.user.User;
-import com.compass.compass.dao.jobInfoDAO.QueryJobInfoDao;
+import com.compass.compass.dao.jobInfoDAO.QueryJobDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +20,9 @@ import org.springframework.web.bind.annotation.*;
 public class PagesServlet {
     @Autowired
     RecommendServlet recommendServlet;
-    QueryJobInfoDao queryJobInfoDao;
-
+    @Autowired
+    QueryJobDao queryJobDao;
+    //TODO 编写传递内容的文档
     @RequestMapping("/index")
     public String indexPage(Model model,@SessionAttribute(required = false) User user){
         //从dao或者其他地方获取系统中的工作的分类，这里的分类应该是position的分类
@@ -47,11 +49,26 @@ public class PagesServlet {
     选择下面的，因为对于生成链接的事情是后端处理的
      */
 
-    @RequestMapping(value = "/jobInfo/{jobId}",method = RequestMethod.GET)
-    public String jobInfoPage(Model model, @PathVariable long jobId){
-        JobInfo jobInfo = queryJobInfoDao.queryInfoById(jobId);
-        model.addAttribute("jobInfo",jobInfo);
-        model.addAttribute("jobBaseRecommends", recommendServlet.getJobBaseRecommends(jobInfo));
+    @RequestMapping(value = "/positionInfo/{positionIndex}",method = RequestMethod.GET)
+    public String positionInfoPage(Model model, @PathVariable(name = "positionIndex") Long positionIndex){
+        Position position = queryJobDao.queryPositionByIndex(positionIndex);
+        model.addAttribute("position",position);
+        model.addAttribute("positionBaseRecommends", recommendServlet.getPositionBaseRecommends(position));
         return "jobDetail.jsp";
+    }
+
+    @RequestMapping("/guessYourLike")
+    public String getGuessYourLikePage(){
+        return "guessYouLike.jsp";
+    }
+
+    @RequestMapping("/recommend")
+    public String recommendPositionsPage(){
+        return "recommend.jsp";
+    }
+
+    @RequestMapping("/similarPositions")
+    public String similarPositionsPage(){
+        return "similarJobs.jsp";
     }
 }

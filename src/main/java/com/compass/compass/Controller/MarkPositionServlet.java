@@ -12,21 +12,24 @@ import org.springframework.web.bind.annotation.*;
  * @author cn
  */
 @Controller
-public class MarkJobServlet {
+public class MarkPositionServlet {
     @Autowired
     MarkJobDao markJobDao;
 
     @ResponseBody
-    @RequestMapping(value = "/markJob/{jobId}",method = RequestMethod.POST)
-    public boolean addMark(@PathVariable("jobId") String jobId, @SessionAttribute User user){
+    @RequestMapping(value = "/markPosition/{positionIndex}",method = RequestMethod.POST)
+    public boolean addMark(@PathVariable("positionIndex") long positionIndex, @SessionAttribute User user){
 //        markJobDao.markJob(jobId,);
         return false;
     }
 
-    @RequestMapping("/markedJobs")
-    public String markedJobs(Model model, @SessionAttribute User user){
+    @RequestMapping("/markedPositions")
+    public String markedJobs(Model model, @SessionAttribute(required = false) User user){
 //        model.addAttribute("markedJobs", queryJobInfoDao.queryMarkedOf(""));
 
+        if (user == null){
+            //要求登录
+        }
         return "markedjobs.jsp";
     }
 

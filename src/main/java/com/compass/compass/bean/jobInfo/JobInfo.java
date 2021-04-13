@@ -26,10 +26,6 @@ public class JobInfo extends JobInfoDigest{
      * 可能为空
      * */
     private String employUrl;
-    /**
-     * 公司名
-     */
-    private String companyName;
     /**福利*/
     private String welfare;
     /**职位信息概述*/
@@ -37,6 +33,7 @@ public class JobInfo extends JobInfoDigest{
     /**
      * 具体的职位信息列表
      */
+    @Deprecated
     private List<Position> positions;
 
     public JobInfo(){
@@ -45,12 +42,23 @@ public class JobInfo extends JobInfoDigest{
 
     public JobInfo(long id, String title, String originalUrl, String type,
                    String beginDate, String endDate, String deliverUrl, String employUrl,
-                   String companyName,String welfare, String positionText, List<Position> positions) {
-        super(id,title,type,beginDate,endDate);
+                   String companyName,String welfare, String positionText) {
+        super(id,title,type,beginDate,endDate,companyName);
         this.originalUrl = originalUrl;
         this.deliverUrl = deliverUrl;
         this.employUrl = employUrl;
-        this.companyName = companyName;
+        this.welfare = welfare;
+        this.positionText = positionText;
+    }
+
+    @Deprecated
+    public JobInfo(long id, String title, String originalUrl, String type,
+                   String beginDate, String endDate, String deliverUrl, String employUrl,
+                   String companyName,String welfare, String positionText, List<Position> positions) {
+        super(id,title,type,beginDate,endDate,companyName);
+        this.originalUrl = originalUrl;
+        this.deliverUrl = deliverUrl;
+        this.employUrl = employUrl;
         this.welfare = welfare;
         this.positionText = positionText;
         this.positions = positions;
@@ -80,14 +88,6 @@ public class JobInfo extends JobInfoDigest{
         this.employUrl = employUrl;
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
     public String getWelfare() {
         return welfare;
     }
@@ -104,11 +104,31 @@ public class JobInfo extends JobInfoDigest{
         this.positionText = positionText;
     }
 
+    @Deprecated
     public List<Position> getPositions() {
         return positions;
     }
 
+    @Deprecated
     public void setPositions(List<Position> positions) {
         this.positions = positions;
+    }
+
+    @Override
+    public String toString() {
+        return "JobInfo{" +
+                "originalUrl='" + originalUrl + '\'' +
+                ", deliverUrl='" + deliverUrl + '\'' +
+                ", employUrl='" + employUrl + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", welfare='" + welfare + '\'' +
+                ", positionText='" + positionText + '\'' +
+                ", positions=" + positions +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", beginDate='" + beginDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 }

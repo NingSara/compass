@@ -24,18 +24,23 @@ public class JobInfoDigest {
      * 可能为空
      * */
     protected String endDate;
+    /**
+    * 公司名
+     */
+    protected String companyName;
 
     public JobInfoDigest() {
 
     }
 
     public JobInfoDigest(long id, String title, String type,
-                         String beginDate, String endDate) {
+                         String beginDate, String endDate,String companyName) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.beginDate = beginDate;
         this.endDate = endDate;
+        this.companyName = companyName;
     }
 
     public long getId() {
@@ -76,5 +81,23 @@ public class JobInfoDigest {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+    @Override
+    public String toString() {
+        return "JobInfoDigest{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", beginDate='" + beginDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 }

@@ -4,7 +4,9 @@ import com.compass.compass.bean.Link;
 
 /**
  * @author cn
+ *
  */
+@Deprecated
 public class JobInfoLink extends JobInfoDigest implements Link {
 
     @Override

@@ -1,7 +1,8 @@
 package com.compass.compass.Controller.recommend;
 
 import com.compass.compass.bean.jobInfo.JobInfo;
-import com.compass.compass.bean.recommend.JobBaseRecommendLink;
+import com.compass.compass.bean.jobInfo.Position;
+import com.compass.compass.bean.recommend.PositionBaseRecommendLink;
 import com.compass.compass.bean.recommend.UserBaseRecommendLink;
 import com.compass.compass.bean.user.User;
 import org.springframework.stereotype.Component;
@@ -18,25 +19,25 @@ public class SimpleRecommendServletImp implements RecommendServlet {
     public List<UserBaseRecommendLink> getUserBaseRecommends(User user) {
         ArrayList<UserBaseRecommendLink> recommendLinks = new ArrayList<>();
         UserBaseRecommendLink userBaseRecommendLink = new UserBaseRecommendLink();
-        userBaseRecommendLink.setId(0);//TODO id为0的job作为测试
+        userBaseRecommendLink.setPositionIndex(0);//TODO id为0的job作为测试
         recommendLinks.add(userBaseRecommendLink);
 
         return recommendLinks;
     }
 
     @Override
-    public List<JobBaseRecommendLink> getJobBaseRecommends(long relateJobId) {
-        ArrayList<JobBaseRecommendLink> recommendLinks = new ArrayList<>();
-        JobBaseRecommendLink jobBaseRecommendLink = new JobBaseRecommendLink();
-        jobBaseRecommendLink.setId(0);//TODO id为0的job作为测试
-        recommendLinks.add(jobBaseRecommendLink);
+    public  List<PositionBaseRecommendLink> getPositionBaseRecommends(long relatePositionIndex) {
+        ArrayList<PositionBaseRecommendLink> recommendLinks = new ArrayList<>();
+        PositionBaseRecommendLink positionBaseRecommendLink = new PositionBaseRecommendLink();
+        positionBaseRecommendLink.setPositionIndex(0);//TODO id为0的job作为测试
+        recommendLinks.add(positionBaseRecommendLink);
 
         return recommendLinks;
     }
 
     @Override
-    public List<JobBaseRecommendLink> getJobBaseRecommends(JobInfo jobInfo) {
+    public List<PositionBaseRecommendLink> getPositionBaseRecommends(Position position) {
 
-        return getJobBaseRecommends(jobInfo.getId());
+        return getPositionBaseRecommends(position.getPositionIndex());
     }
 }

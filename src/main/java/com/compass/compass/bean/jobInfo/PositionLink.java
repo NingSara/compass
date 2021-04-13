@@ -1,9 +1,8 @@
 package com.compass.compass.bean.jobInfo;
 
-/**
- * @author cn
- */
-public class Position implements PositionDigest{
+import com.compass.compass.bean.Link;
+
+public class PositionLink implements Link,PositionDigest {
 
     /**职位在数据库的索引 */
     private long positionIndex;
@@ -12,7 +11,7 @@ public class Position implements PositionDigest{
     /**
      * 与它关联的job
      */
-    private JobInfo relateJob;
+    private JobInfoDigest relateJob;
     /**职位名称 */
     private String name;
     /**职位类型*/
@@ -28,24 +27,12 @@ public class Position implements PositionDigest{
     /**招聘人数*/
     private String quantity;
 
-    public Position() {
+    @Override
+    public String getUrl() {
+        return null;
     }
 
-    public Position(long positionIndex, long jobId, JobInfo relateJob,
-                    String name, String type, String degree, String require,
-                    String place, String wage, String quantity) {
-        this.positionIndex = positionIndex;
-        this.jobId = jobId;
-        this.relateJob = relateJob;
-        this.name = name;
-        this.type = type;
-        this.degree = degree;
-        this.require = require;
-        this.place = place;
-        this.wage = wage;
-        this.quantity = quantity;
-    }
-
+    @Override
     public long getPositionIndex() {
         return positionIndex;
     }
@@ -54,6 +41,7 @@ public class Position implements PositionDigest{
         this.positionIndex = positionIndex;
     }
 
+    @Override
     public long getJobId() {
         return jobId;
     }
@@ -62,6 +50,15 @@ public class Position implements PositionDigest{
         this.jobId = jobId;
     }
 
+    public JobInfoDigest getRelateJobDigest() {
+        return relateJob;
+    }
+
+    public void setRelateJobDigest(JobInfoDigest relateJob) {
+        this.relateJob = relateJob;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -70,6 +67,7 @@ public class Position implements PositionDigest{
         this.name = name;
     }
 
+    @Override
     public String getType() {
         return type;
     }
@@ -78,6 +76,7 @@ public class Position implements PositionDigest{
         this.type = type;
     }
 
+    @Override
     public String getDegree() {
         return degree;
     }
@@ -94,6 +93,7 @@ public class Position implements PositionDigest{
         this.require = require;
     }
 
+    @Override
     public String getPlace() {
         return place;
     }
@@ -107,6 +107,7 @@ public class Position implements PositionDigest{
         return relateJob.getCompanyName();
     }
 
+    @Override
     public String getWage() {
         return wage;
     }
@@ -115,38 +116,12 @@ public class Position implements PositionDigest{
         this.wage = wage;
     }
 
+    @Override
     public String getQuantity() {
         return quantity;
     }
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
-    }
-
-    public JobInfoDigest getRelateJobDigest() {
-        return relateJob;
-    }
-
-    public JobInfo getCompleteJobInfo(){
-        return relateJob;
-    }
-
-    public void setRelateJob(JobInfo relateJob) {
-        this.relateJob = relateJob;
-    }
-
-    @Override
-    public String toString() {
-        return "Position{" +
-                "positionIndex=" + positionIndex +
-                ", jobId=" + jobId +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", degree='" + degree + '\'' +
-                ", require='" + require + '\'' +
-                ", place='" + place + '\'' +
-                ", wage='" + wage + '\'' +
-                ", quantity='" + quantity + '\'' +
-                '}';
     }
 }
