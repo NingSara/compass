@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import com.compass.compass.bean.jobInfo.* %>
+<%@ page import com.compass.compass.bean.recommend.* %>
+<%@ page import com.compass.compass.bean.user.* %>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -91,7 +94,37 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-    
+<%!User myuser=null;
+Position thePosition=null;
+List<PositionBaseRecommendLink> similarjoblist=null; 
+long positionIndex;
+string jobname;
+string jobtype;
+string jobIntro;
+string time;
+string degree;
+string require;
+string place;
+string companyName;
+string wage;
+string quantity;
+string email;
+string site;
+string companyIntro;
+%>
+<%myuser=(User)session.getAttribute("user"); 
+thePosition=(Position)request.getParameter("position");
+similarjoblist=(List<PositionBaseRecommendLink>)request.getParameter("positionBaseRecommends");
+positionIndex=thePosition.getPositionIndex();
+jobname=thePosition.getName();
+jobtype=thePosition.getType();
+degree=thePosition.getDegree();
+require=thePosotion.getRequire();
+place=thePosition.getPlace();
+companyName=thePosition.getCompanyName();
+wage=thePosition.getWage();
+quantity=thePosition.getQuantity();
+%>        
     <!--导航-->
     <div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
@@ -138,7 +171,13 @@
 						<div 
 						style=
 						"border-radius:25px;background-color:#26AE61;color:#fff;margin:10px 0px 0px 5px;height:30px;width:100px;padding:5px 20px 0px 20px">
-							<a href="login.jsp" class="loginbutton">登录/注册</a>
+							<%if(myuser==null){
+								out.print("<a href=\"login.jsp\" class=\"loginbutton\">登录/注册</a>");
+							}else{
+								out.print("<a href=\"#\" class=\"loginbutton\">您已登录</a>");
+							}
+							%>
+							<!-- <a href="login.jsp" class="loginbutton">登录/注册</a> -->
 						</div>
 					</li>
 				</ul> 
@@ -163,8 +202,10 @@
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
     				<div style="float:left;margin-left:30px;max-width:220px">
-    					<h3><a href="#" class="greenlink">JAVA开发初级工程师</a></h3>
-    					<div style="color:#A9A9A9;">银联商务股份有限公司</div>
+    					<!-- <h3><a href="#" class="greenlink">JAVA开发初级工程师</a></h3> -->
+    					<!-- <div style="color:#A9A9A9;">银联商务股份有限公司</div> -->
+    					<h3><a href="#" class="greenlink"><%=jobname %>></a></h3>
+    					<div style="color:#A9A9A9;"><%=companyName %></div>
     				</div>
     			</div>
     			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
@@ -176,12 +217,13 @@
     				<div 
 						style=
 						"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
-							薪资：10k-12k
+							<!-- 薪资：10k-12k -->
+							<%=wage %>
 					</div>
     			</div>
     			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
     			style="font-size:15px;">
-    				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;<!-- 校招 --><%=type %>&nbsp;&nbsp;</span>
     			</div>
     	</div>
     </div>
@@ -202,7 +244,7 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			岗位职责：
+    			<!-- 岗位职责：
     			<br>
     			1、负责系统后端开发工作，根据任务需求完成独立模块的开发；
     			<br>
@@ -211,7 +253,11 @@
     			3、参与软件需求与设计审核和代码检查；
     			<br>4、根据设计文档或需求说明完成代码编写，调试，测试和维护；
     			<br>
-    			5、分析并解决软件开发过程中的问题。
+    			5、分析并解决软件开发过程中的问题。 -->
+    			<%if(jobIntro!=null){
+    				out.print(jobIntro);
+    				}
+    				else{out.print("无");}%>
     			</div>
     		</div>
     	</div>
@@ -227,7 +273,7 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">2021年3月-2099年10月</div>
+    			<div style="color:#A9A9A9;font-size:17px"><!-- 2021年3月-2099年10月 --><%=time %></div>
     		</div>
     	</div>
     	
@@ -242,12 +288,15 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-				1、.熟悉常用的Java语言，有javaWeb项目开发经验。
+<!-- 				1、.熟悉常用的Java语言，有javaWeb项目开发经验。
 				2、熟练掌握Oracle、MySQL等数据库开发。
 3、熟练使用Hibernate、Spring等框架进行整合项目开发。
 4、能使用svn、 Maven等代码管理方式；
 5、具有规范化、标准化的代码编写习惯，撰写技术文档的能力；
-6、熟悉基本的软件开发流程，有良好的沟通能力和团队合作能力。
+6、熟悉基本的软件开发流程，有良好的沟通能力和团队合作能力。 -->
+<%if(require!=null){
+	out.print(require);
+}else out.print("无"); %>
     			</div>
     		</div>
     	</div>
@@ -262,7 +311,7 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">济南高新区 舜风路1006-5号</div>
+    			<div style="color:#A9A9A9;font-size:17px"><!-- 济南高新区 舜风路1006-5号 --><%=place %></div>
     		</div>
     	</div>
     	
@@ -277,8 +326,8 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			五险一金，补充医疗保险，餐饮补贴，通讯补贴，绩效奖金，定期体检
-    			薪资：10k-15k
+<!--      			五险一金，补充医疗保险，餐饮补贴，通讯补贴，绩效奖金，定期体检 -->
+    			薪资：<!-- 10k-15k --><%=wage %>
     			</div>
     		</div>
     	</div>
@@ -294,7 +343,8 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			10人
+    			<!-- 10人 -->
+    			<%=quantity %>
     			</div>
     		</div>
     	</div>
@@ -309,7 +359,8 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">济南高新区 舜风路1006-5号</div>
+    			<div style="color:#A9A9A9;font-size:17px"><!-- 济南高新区 舜风路1006-5号 -->
+    			<%if(email!=null){out.print(email);}else{out.print("无");} %></div>
     		</div>
     	</div>
     	
@@ -323,7 +374,8 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">www.baidu.com</div>
+    			<div style="color:#A9A9A9;font-size:17px"><!-- www.baidu.com -->
+    			<%if(site!=null){out.print(site);}else{out.print("无");} %></div>
     		</div>
     	</div>
     	
@@ -338,7 +390,7 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			银联商务股份有限公司（简称：银联商务）
+    			<!-- 银联商务股份有限公司（简称：银联商务）
     			是中国银联控股的，专门从事线下、互联网以及移动支付的综合支付与信息服务机构，
     			成立于2002年12月，总部设在上海市浦东新区。
     			银联商务是首批获得人民银行《支付业务许可证》的支付机构，也是人民银行确定的21家重点支付机构之一。
@@ -351,6 +403,7 @@
     覆盖率达100%，全辖员工超万人，服务特约商户793.9万家；2019年受理各类交易127.3亿笔、15万亿元，是国内规模***的综合支付服务机构之一。 
     2019年公司荣获“2019胡润中国新金融50强”、“中国智慧城市发展十周年领军企业”、
     “2019创新互联网企业TOP100”、“2019中国金融机构金牌榜·金龙奖”年度***金融科技创新公司等众多奖项。
+ --><%=companyIntro %>
 
     			</div>
     		</div>
