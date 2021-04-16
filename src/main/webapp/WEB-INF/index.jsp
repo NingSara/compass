@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import com.compass.compass.bean.jobInfo.* %>
+<%@ page import com.compass.compass.bean.recommend.* %>
+<%@ page import com.compass.compass.bean.user.* %>
 <!DOCTYPE html> 
 <html> 
 <head> 
@@ -80,7 +83,15 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-     
+<%!User myuser=null; 
+List<UserBaseRecommendLink> recommend=null;
+List<UserBaseRecommendLink> guessYouLike=null;
+%>
+<%
+myuser=(User)session.getAttribute("user"); 
+recommend=(List<UserBaseRecommendLink>)request.getParameter("recommendForYou");
+guessYouLike=(List<UserBaseRecommendLink>)request.getParameter("guessYourLike");
+%>     
 <!--导航--> 
 	<div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
@@ -128,7 +139,13 @@
 						<div 
 						style=
 						"border-radius:25px;background-color:#26AE61;color:#fff;margin:10px 0px 0px 5px;height:30px;width:100px;padding:5px 20px 0px 20px">
-							<a href="login.jsp" class="loginbutton">登录/注册</a>
+							<%if(myuser==null){
+								out.print("<a href=\"login.jsp\" class=\"loginbutton\">登录/注册</a>");
+							}else{
+								out.print("<a href=\"#\" class=\"loginbutton\">您已登录</a>");
+							}
+							%>
+							<!-- <a href="login.jsp" class="loginbutton">登录/注册</a> -->
 						</div>
 					</li>
 				</ul> 
@@ -479,6 +496,120 @@
 		</div>
 	</div>
 </div>
+
+<!--最新信息部分-->
+<div style="width:100%;padding-top:20px;padding-bottom:50px">
+	<div class="container">
+		<h1 style="text-align:center">最新信息</h1>
+    	<h5 style="color:#C0C0C0;text-align:center;margin-bottom:15px">查看最新发布的就业信息</h5>
+    	<div class="row guessrow">
+    	
+        <!--最新信息中的一个职位卡片-->
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
+    		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:#26AE61;font-size:50px"></span>
+    		</div>
+    		<div style="float:left;margin-left:10px" class="guessblock">
+    			<h3><a href="">输入职位名</a></h3>
+    			<div style="margin-top:10px">
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    			</div>
+    			<div style="margin-bottom:5px;margin-top:5px">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    			</div>
+    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    		</div>
+    	</div>
+    	<!--职位卡片结束。下面类似。一共6个卡片-->
+
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
+    		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(77,173,245);font-size:50px"></span>
+    		</div>
+    		<div style="float:left;margin-left:10px" class="guessblock">
+    			<h3><a href="">输入职位名</a></h3>
+    			<div style="margin-top:10px">
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    			</div>
+    			<div style="margin-bottom:5px;margin-top:5px">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    			</div>
+    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
+    		</div>
+    	</div>
+    	
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;margin-top:15px">
+    		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(29,100,180);font-size:50px"></span>
+    		</div>
+    		<div style="float:left;margin-left:10px" class="guessblock">
+    			<h3><a href="">输入职位名</a></h3>
+    			<div style="margin-top:10px">
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    			</div>
+    			<div style="margin-bottom:5px;margin-top:5px">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    			</div>
+    			<span class="label label-warning">&nbsp;&nbsp;兼职&nbsp;&nbsp;</span>
+    		</div>
+    	</div>
+    	
+    	</div>
+    	
+		<div class="row guessrow">
+		
+			<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
+    		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(128,0,255);font-size:50px"></span>
+    		</div>
+    		<div style="float:left;margin-left:10px" class="guessblock">
+    			<h3><a href="">输入职位名</a></h3>
+    			<div style="margin-top:10px">
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    			</div>
+    			<div style="margin-bottom:5px;margin-top:5px">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    			</div>
+    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    		</div>
+    	</div>
+    	
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
+    		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(64,224,208);font-size:50px"></span>
+    		</div>
+    		<div style="float:left;margin-left:10px" class="guessblock">
+    			<h3><a href="">输入职位名</a></h3>
+    			<div style="margin-top:10px">
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    			</div>
+    			<div style="margin-bottom:5px;margin-top:5px">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    			</div>
+    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
+    		</div>
+    	</div>
+    	
+    	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;margin-top:15px">
+    		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
+    			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(255,128,0);font-size:50px"></span>
+    		</div>
+    		<div style="float:left;margin-left:10px" class="guessblock">
+    			<h3><a href="">输入职位名</a></h3>
+    			<div style="margin-top:10px">
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    			</div>
+    			<div style="margin-bottom:5px;margin-top:5px">
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    			</div>
+    			<span class="label label-warning">&nbsp;&nbsp;兼职&nbsp;&nbsp;</span>
+    		</div>
+    	</div>
+			
+		</div>
+	</div>
+</div>
+<!--最新信息部分结束-->
 
     <!-- 页脚 -->
 <div class="indexfoot">
