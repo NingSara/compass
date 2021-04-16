@@ -84,31 +84,14 @@ public class QueryJobDao extends DAO {
     }
 
     /**
-     *
+     * 查询对应该jobId的工作
      * @param jobId
      * @return
      * @author cn
      */
     public List<Position> queryPositionsOf(long jobId){
-        String queryRelatePositions = "SELECT * FROM positions WHERE job_id = ?";
-        return jdbcTemplate.query(queryRelatePositions, new PositionRowMapper(), jobId);
-    }
-
-    private class PositionRowMapper implements RowMapper<Position>{
-        @Override
-        public Position mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Position position = new Position();
-            position.setJobId(rs.getLong("job_id"));
-            position.setPositionIndex(rs.getLong("index"));
-            position.setName(rs.getString("name"));
-            position.setType(rs.getString("type"));
-            position.setDegree(rs.getString("degree"));
-            position.setRequire(rs.getString("require"));
-            position.setRequire(rs.getString("place"));//TODO 这里要不要改成city
-            position.setWage(rs.getString("wage"));
-            position.setQuantity(rs.getString("quantity"));
-            return position;
-        }
+        String queryRelatePositions = CompletePositionRowMapper.preSql_1 + "WHERE job_id = ?";
+        return jdbcTemplate.query(queryRelatePositions, new CompletePositionRowMapper(), jobId);
     }
 
     /**
@@ -117,10 +100,8 @@ public class QueryJobDao extends DAO {
      * @return
      */
     public Position queryPositionByIndex(long positionIndex){
-        String querySql = "SELECT * FROM positions WHERE `index` = ?";
-        Position position = jdbcTemplate.queryForObject(querySql, new PositionRowMapper(), positionIndex);
-        position.setRelateJob(queryJobInfoById(position.getJobId()));
-        return position;
+        String querySql = CompletePositionRowMapper.preSql_1 + "WHERE `index` = ?";
+        return jdbcTemplate.queryForObject(querySql, new CompletePositionRowMapper(), positionIndex);
     }
 
     /**
@@ -143,25 +124,9 @@ public class QueryJobDao extends DAO {
      */
     @Transactional
     public List<PositionLink> queryNextNPositions(int positionNum,int fromIndex){
-        String querySql = "SELECT `index`, job_id, name, type, degree, place, wage, quantity FROM positions " +
-                "ORDER BY id desc LIMIT ?,?";
+        String querySql = PositionLinkRowMapper.sql + "ORDER BY `index` desc LIMIT ?,?";
 
-        return jdbcTemplate.query(querySql, new RowMapper<PositionLink>() {
-            @Override
-            public PositionLink mapRow(ResultSet rs, int rowNum) throws SQLException {
-                long jobId = rs.getLong("job_id");
-                PositionLink positionLink = new PositionLink();
-                positionLink.setPositionIndex(rs.getLong("index"));
-                positionLink.setJobId(jobId);
-                positionLink.setType(rs.getString("type"));
-                positionLink.setDegree(rs.getString("degree"));
-                positionLink.setPlace(rs.getString("place"));
-                positionLink.setWage(rs.getString("wage"));
-                positionLink.setQuantity(rs.getString("quantity"));
-                positionLink.setRelateJobDigest(queryJobInfoDigestById(jobId));
-                return positionLink;
-            }
-        },fromIndex,positionNum);
+        return jdbcTemplate.query(querySql,new PositionLinkRowMapper(),fromIndex,positionNum);
     }
 
     /**
@@ -175,4 +140,68 @@ public class QueryJobDao extends DAO {
         return null;
     }
 
+}
+
+/**
+ * 组装完整的Position信息，包含对应的jobInfo
+ */
+class CompletePositionRowMapper implements RowMapper<Position>{
+    //对应的sql语句
+    static String preSql_1 = "SELECT * FROM positions left OUTER JOIN jobs ON jobs.id = positions.job_id";
+    @Override
+    public Position mapRow(ResultSet rs, int rowNum) throws SQLException {
+        Position position = new Position();
+        JobInfo jobInfo = new JobInfo();
+        position.setJobId(rs.getLong("job_id"));
+        position.setPositionIndex(rs.getLong("index"));
+        position.setName(rs.getString("name"));
+        position.setType(rs.getString("type"));
+        position.setDegree(rs.getString("degree"));
+        position.setRequire(rs.getString("require"));
+        position.setRequire(rs.getString("place"));
+        position.setWage(rs.getString("wage"));
+        position.setQuantity(rs.getString("quantity"));
+        position.setRelateJob(jobInfo);
+
+        jobInfo.setId(rs.getLong("id"));
+        jobInfo.setTitle(rs.getString("title"));
+        jobInfo.setOriginalUrl(rs.getString("original_url"));
+        jobInfo.setType(rs.getString("type"));
+        jobInfo.setBeginDate(rs.getString("begin_date"));
+        jobInfo.setEndDate(rs.getString("end_date"));
+        jobInfo.setDeliverUrl(rs.getString("deliver_url"));
+        jobInfo.setEmployUrl(rs.getString("employ_url"));
+        jobInfo.setCompanyName(rs.getString("company_name"));
+        jobInfo.setWelfare(rs.getString("welfare"));
+        jobInfo.setPositionText(rs.getString("position_text"));
+
+        return position;
+    }
+}
+
+class PositionLinkRowMapper implements RowMapper<PositionLink>{
+    static String sql = "SELECT * FROM(" +
+            "SELECT `index`, job_id, name, type, degree, place, wage, quantity FROM positions) positions " +
+            "LEFT OUTER JOIN (SELECT id,title,type,begin_date,end_date,company_name FROM jobs) jobs ON jobs.id = positions.job_id ";
+    @Override
+    public PositionLink mapRow(ResultSet rs, int rowNum) throws SQLException {
+        long jobId = rs.getLong("job_id");
+        PositionLink positionLink = new PositionLink();
+        positionLink.setPositionIndex(rs.getLong("index"));
+        positionLink.setJobId(jobId);
+        positionLink.setType(rs.getString("type"));
+        positionLink.setDegree(rs.getString("degree"));
+        positionLink.setPlace(rs.getString("place"));
+        positionLink.setWage(rs.getString("wage"));
+        positionLink.setQuantity(rs.getString("quantity"));
+
+        JobInfoDigest relateJob = new JobInfoDigest(jobId,
+                rs.getString("title"),
+                rs.getString("type"),
+                rs.getString("begin_date"),
+                rs.getString("end_date"),
+                rs.getString("company_name"));
+        positionLink.setRelateJobDigest(relateJob);
+        return positionLink;
+    }
 }

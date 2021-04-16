@@ -31,6 +31,10 @@ public class JobInfo extends JobInfoDigest{
     /**职位信息概述*/
     private String positionText;
     /**
+     * 公司介绍
+     */
+    private String companyIntroduction;
+    /**
      * 具体的职位信息列表
      */
     @Deprecated
@@ -42,12 +46,13 @@ public class JobInfo extends JobInfoDigest{
 
     public JobInfo(long id, String title, String originalUrl, String type,
                    String beginDate, String endDate, String deliverUrl, String employUrl,
-                   String companyName,String welfare, String positionText) {
+                   String companyName,String welfare,String companyIntroduction, String positionText) {
         super(id,title,type,beginDate,endDate,companyName);
         this.originalUrl = originalUrl;
         this.deliverUrl = deliverUrl;
         this.employUrl = employUrl;
         this.welfare = welfare;
+        this.companyIntroduction = companyIntroduction;
         this.positionText = positionText;
     }
 
@@ -94,6 +99,14 @@ public class JobInfo extends JobInfoDigest{
 
     public void setWelfare(String welfare) {
         this.welfare = welfare;
+    }
+
+    public String getCompanyIntroduction() {
+        return companyIntroduction;
+    }
+
+    public void setCompanyIntroduction(String companyIntroduction) {
+        this.companyIntroduction = companyIntroduction;
     }
 
     public String getPositionText() {
