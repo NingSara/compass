@@ -17,7 +17,7 @@ public class JobInfoDigest {
      * */
     protected String type;
     /**招聘起始时间*/
-    //TODO 起始时间和截止时间是否需要换成java的time类型
+    //起始时间和截止时间仅仅是显示不需要计算，所以不用换成date time
     protected String beginDate;
     /**
      * 招聘截止时间

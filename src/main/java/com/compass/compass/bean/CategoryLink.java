@@ -18,4 +18,11 @@ public class CategoryLink implements Link{
     public String getUrl() {
         return "/category/" + category;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryLink{" +
+                "category='" + category + '\'' +
+                '}';
+    }
 }

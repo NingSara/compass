@@ -12,6 +12,7 @@
     <artifactId>compass</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>compass</name>
+    <packaging>war</packaging>
     <description>山东大学软件学院compass项目--职位发布与推荐系统</description>
     <properties>
         <java.version>11</java.version>

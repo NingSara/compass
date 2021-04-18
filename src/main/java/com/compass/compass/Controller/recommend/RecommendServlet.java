@@ -14,9 +14,27 @@ import java.util.List;
  */
 public interface RecommendServlet {
     //按照名字，理应是controller，但是由于可能没有对请求响应，所以暂时只是一个component
-    public List<UserBaseRecommendLink> getUserBaseRecommends(User user);
 
-    public List<PositionBaseRecommendLink> getPositionBaseRecommends(long relatePositionIndex);
+    /**
+     * 根据用户喜好推荐岗位
+     * @param user
+     * @return
+     */
+    public List<UserBaseRecommendLink> guessYourLike(User user);
 
-    public List<PositionBaseRecommendLink> getPositionBaseRecommends(Position position);
+    /**
+     * 根据用户特点，能力推荐岗位
+     * @param user
+     * @return
+     */
+    public List<UserBaseRecommendLink> recommendForYou(User user);
+
+    /**
+     *
+     * @param relatePositionIndex
+     * @return
+     */
+    public List<PositionBaseRecommendLink> similarPositionRecommends(long relatePositionIndex);
+
+    public List<PositionBaseRecommendLink> similarPositionRecommends(Position position);
 }

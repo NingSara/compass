@@ -18,10 +18,11 @@ public class UserInfoServlet {
 
     @RequestMapping(value = "/myInfo",method = RequestMethod.GET)
     public String myInfoPage(Model model, @SessionAttribute(required = false) User user){
-        //直接用user里的信息还是复制到model一份
+        //直接用user里的信息
         if (user == null)
         {
-            //TODO 增加一个aspect或者过滤器来解决没有user但是要访问需要user的页面
+            //TODO 如何要求给出提示
+            return "redirect:/login";
         }
         return "/myinfo.jsp";
     }

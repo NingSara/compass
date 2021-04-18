@@ -147,7 +147,7 @@ public class QueryJobDao extends DAO {
  */
 class CompletePositionRowMapper implements RowMapper<Position>{
     //对应的sql语句
-    static String preSql_1 = "SELECT * FROM positions left OUTER JOIN jobs ON jobs.id = positions.job_id";
+    static String preSql_1 = "SELECT * FROM positions left OUTER JOIN jobs ON jobs.id = positions.job_id ";
     @Override
     public Position mapRow(ResultSet rs, int rowNum) throws SQLException {
         Position position = new Position();

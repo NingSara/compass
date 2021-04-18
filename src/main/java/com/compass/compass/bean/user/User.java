@@ -4,7 +4,7 @@ package com.compass.compass.bean.user;
  * @author cn
  */
 public class User {
-    private int userID;
+    private String userID;
 
     private String password;
 
@@ -24,7 +24,7 @@ public class User {
 
     private String wantType;
 
-    public User(int userID, String password, String name,
+    public User(String userID, String password, String name,
                 String sex, int age, String major, String degree,
                 String wantCity, String wantWage, String wantType) {
         this.userID = userID;
@@ -39,11 +39,11 @@ public class User {
         this.wantType = wantType;
     }
 
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 

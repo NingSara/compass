@@ -15,18 +15,23 @@ import java.util.List;
  */
 @Component
 public class SimpleRecommendServletImp implements RecommendServlet {
+
     @Override
-    public List<UserBaseRecommendLink> getUserBaseRecommends(User user) {
+    public List<UserBaseRecommendLink> guessYourLike(User user) {
         ArrayList<UserBaseRecommendLink> recommendLinks = new ArrayList<>();
         UserBaseRecommendLink userBaseRecommendLink = new UserBaseRecommendLink();
         userBaseRecommendLink.setPositionIndex(0);//TODO id为0的job作为测试
         recommendLinks.add(userBaseRecommendLink);
-
         return recommendLinks;
     }
 
     @Override
-    public  List<PositionBaseRecommendLink> getPositionBaseRecommends(long relatePositionIndex) {
+    public List<UserBaseRecommendLink> recommendForYou(User user) {
+        return guessYourLike(user);
+    }
+
+    @Override
+    public  List<PositionBaseRecommendLink> similarPositionRecommends(long relatePositionIndex) {
         ArrayList<PositionBaseRecommendLink> recommendLinks = new ArrayList<>();
         PositionBaseRecommendLink positionBaseRecommendLink = new PositionBaseRecommendLink();
         positionBaseRecommendLink.setPositionIndex(0);//TODO id为0的job作为测试
@@ -36,8 +41,8 @@ public class SimpleRecommendServletImp implements RecommendServlet {
     }
 
     @Override
-    public List<PositionBaseRecommendLink> getPositionBaseRecommends(Position position) {
+    public List<PositionBaseRecommendLink> similarPositionRecommends(Position position) {
 
-        return getPositionBaseRecommends(position.getPositionIndex());
+        return similarPositionRecommends(position.getPositionIndex());
     }
 }

@@ -4,6 +4,7 @@ import com.compass.compass.Controller.recommend.RecommendServlet;
 import com.compass.compass.bean.jobInfo.JobInfo;
 import com.compass.compass.bean.jobInfo.Position;
 import com.compass.compass.bean.user.User;
+import com.compass.compass.dao.jobInfoDAO.CategoryDao;
 import com.compass.compass.dao.jobInfoDAO.QueryJobDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,43 +23,39 @@ public class PagesServlet {
     RecommendServlet recommendServlet;
     @Autowired
     QueryJobDao queryJobDao;
-    //TODO 编写传递内容的文档
+    @Autowired
+    CategoryDao categoryDao;
+
     @RequestMapping("/index")
     public String indexPage(Model model,@SessionAttribute(required = false) User user){
         //从dao或者其他地方获取系统中的工作的分类，这里的分类应该是position的分类
-//        model.addAttribute("categories", );
+        model.addAttribute("categories", categoryDao.queryMostNCategories(10));
         //从dao获取最近发布的招聘信息推荐,（要不要也加个热门推荐）
-
+        model.addAttribute("recentUpdatePositions", queryJobDao.queryRecentUpdatePositions(10));
         //判断是否为登录状态，向RecommendServlet请求推荐
         if (user != null){
-            model.addAttribute("userBaseRecommends", recommendServlet.getUserBaseRecommends(user));
+            model.addAttribute("guessYourLike", recommendServlet.guessYourLike(user));
+            model.addAttribute("recommendForYou",recommendServlet.recommendForYou(user));
         }
-
         return "index.jsp";
     }
-
-//    @RequestMapping(value = "/jobInfo",method = RequestMethod.GET)
-//    public String jobInfoPage(Model model, @RequestAttribute String id){
-//        JobInfo jobInfo = queryJobInfoDao.queryInfoById(id);
-//        model.addAttribute("jobInfo",jobInfo);
-//        model.addAttribute("jobBaseRecommends", recommendServlet.getJobBaseRecommends(jobInfo));
-//        return "jobDetail.jsp";
-//    }
-
-    /*
-    选择下面的，因为对于生成链接的事情是后端处理的
-     */
 
     @RequestMapping(value = "/positionInfo/{positionIndex}",method = RequestMethod.GET)
     public String positionInfoPage(Model model, @PathVariable(name = "positionIndex") Long positionIndex){
         Position position = queryJobDao.queryPositionByIndex(positionIndex);
         model.addAttribute("position",position);
-        model.addAttribute("positionBaseRecommends", recommendServlet.getPositionBaseRecommends(position));
+        model.addAttribute("positionBaseRecommends", recommendServlet.similarPositionRecommends(position));
         return "jobDetail.jsp";
     }
 
     @RequestMapping("/guessYourLike")
-    public String getGuessYourLikePage(){
+    public String getGuessYourLikePage(Model model,@SessionAttribute(required = false) User user){
+        if (user == null){
+            //重定向至login
+            //TODO 会有很多登录判断，需要想办法抽出来
+            return "redirect:/login";
+        }
+        model.addAttribute("guessYourLike", recommendServlet.guessYourLike(user));
         return "guessYouLike.jsp";
     }
 
