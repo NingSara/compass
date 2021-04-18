@@ -102,14 +102,14 @@
 							按类搜索<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-							<li><a href="category.jsp?categoryName=金融" class="barlink">金融</a></li> 
-							<li><a href="category.jsp?categoryName=销售" class="barlink">销售</a></li> 
-							<li><a href="category.jsp?categoryName=教育/培训" class="barlink">教育/培训</a></li> 
-							<li><a href="category.jsp?categoryName=互联网" class="barlink">互联网</a></li> 
-							<li><a href="category.jsp?categoryName=设计" class="barlink">设计</a></li> 
-							<li><a href="category.jsp?categoryName=房地产" class="barlink">房地产</a></li> 
-							<li><a href="category.jsp?categoryName=医疗" class="barlink">医疗</a></li> 
-							<li><a href="category.jsp?categoryName=食品" class="barlink">食品</a></li>  
+							<li><a href="category.jsp?categoryName=工程技术人员" class="barlink">工程技术人员</a></li> 
+							<li><a href="category.jsp?categoryName=科学研究人员" class="barlink">科学研究人员</a></li> 
+							<li><a href="category.jsp?categoryName=教学人员" class="barlink">教学人员</a></li> 
+							<li><a href="category.jsp?categoryName=金融业务人员" class="barlink">金融业务人员</a></li> 
+							<li><a href="category.jsp?categoryName=经济业务人员" class="barlink">经济业务人员</a></li> 
+							<li><a href="category.jsp?categoryName=办事人员和有关人员" class="barlink">办事人员和有关人员</a></li> 
+							<li><a href="category.jsp?categoryName=商业和服务业人员" class="barlink">商业和服务业人员</a></li> 
+							<li><a href="category.jsp?categoryName=卫生专业技术人员" class="barlink">卫生专业技术人员</a></li>  
 						</ul> 
 					</li> 
 					<li class="dropdown"> 
