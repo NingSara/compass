@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import com.compass.compass.bean.jobInfo.* %>
-<%@ page import com.compass.compass.bean.recommend.* %>
-<%@ page import com.compass.compass.bean.user.* %>
 <!DOCTYPE html> 
 <html> 
 <head> 
@@ -13,8 +10,8 @@
 	<title>jobHunter</title> 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/navibar.css"/>
-    <link rel="stylesheet" type="text/css" href="css/footer.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/navibar.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/footer.css"/>
 	<style type="text/css"> 
 		.block11{
 			padding-bottom:50px;
@@ -83,21 +80,13 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-<%!User myuser=null; 
-List<UserBaseRecommendLink> recommend=null;
-List<UserBaseRecommendLink> guessYouLike=null;
-%>
-<%
-myuser=(User)session.getAttribute("user"); 
-recommend=(List<UserBaseRecommendLink>)request.getParameter("recommendForYou");
-guessYouLike=(List<UserBaseRecommendLink>)request.getParameter("guessYourLike");
-%>     
+     
 <!--导航--> 
 	<div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
 			  
 			<div class="navbar-header">
-			<img src="../img/图标.png" width="180px">
+			<img src="./img/图标.png" width="180px"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
@@ -139,13 +128,7 @@ guessYouLike=(List<UserBaseRecommendLink>)request.getParameter("guessYourLike");
 						<div 
 						style=
 						"border-radius:25px;background-color:#26AE61;color:#fff;margin:10px 0px 0px 5px;height:30px;width:100px;padding:5px 20px 0px 20px">
-							<%if(myuser==null){
-								out.print("<a href=\"login.jsp\" class=\"loginbutton\">登录/注册</a>");
-							}else{
-								out.print("<a href=\"#\" class=\"loginbutton\">您已登录</a>");
-							}
-							%>
-							<!-- <a href="login.jsp" class="loginbutton">登录/注册</a> -->
+							<a href="login.jsp" class="loginbutton">登录/注册</a>
 						</div>
 					</li>
 				</ul> 
@@ -191,7 +174,7 @@ guessYouLike=(List<UserBaseRecommendLink>)request.getParameter("guessYourLike");
         <div class="col-xs-12 col-md-6 block12" 
         style="background-color: #fff">
         <div class="intro-img">
-            <img src="../img/intro.png" style="width:80%" class="img-responsive center-block">
+            <img src="./img/intro.png" style="width:80%" class="img-responsive center-block">
         </div>
         </div>
     </div>
@@ -610,14 +593,13 @@ guessYouLike=(List<UserBaseRecommendLink>)request.getParameter("guessYourLike");
 	</div>
 </div>
 <!--最新信息部分结束-->
-
     <!-- 页脚 -->
 <div class="indexfoot">
 	<div class="container">
 		<div class="row" style="margin-top:50px;margin-bottom:50px">
 			<div class="col-xs-12 col-md-4">
 				<div>
-					<img src="../img/图标2.png" width="180px">
+					<img src="./img/图标2.png" width="180px">
 				</div>
 				<p style="color:rgb(138,153,179);">
 				You can get the latest employment information in real time here.

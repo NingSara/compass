@@ -10,8 +10,8 @@
     <title>登录</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/navibar.css"/>
-    <link rel="stylesheet" type="text/css" href="css/footer.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/navibar.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/footer.css"/>
     <style type="text/css">
     	@media (max-width: 768px){
     		.bodyup{
@@ -60,7 +60,7 @@
 		<div class="container">
 			  
 			<div class="navbar-header">
-			<img src="../img/图标.png" width="180px">
+			<img src="./img/图标.png" width="180px"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
@@ -116,7 +116,7 @@
         		<h1><span style="color:#26AE61;">登录</span><br class="bodyupbr">我的账号</h1>
         	</div>
         	<div class="col-md-5 col-xs-6" style="text-align:center;">
-            	<img src="../img/app.png" style="width:160px" class="img-responsive center-block">
+            	<img src="./img/app.png" style="width:160px" class="img-responsive center-block">
         	</div>
         </div>
 	</div>
@@ -161,7 +161,7 @@
 		<div class="row" style="margin-top:50px;margin-bottom:50px">
 			<div class="col-xs-12 col-md-4">
 				<div>
-					<img src="../img/图标2.png" width="180px">
+					<img src="./img/图标2.png" width="180px">
 				</div>
 				<p style="color:rgb(138,153,179);">
 				You can get the latest employment information in real time here.

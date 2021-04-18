@@ -10,8 +10,8 @@
     <title>我的信息</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/navibar.css"/>
-    <link rel="stylesheet" type="text/css" href="css/footer.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/navibar.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/footer.css"/>
     <style type="text/css">
     	@media (max-width: 768px){
     		.mainrow >.col-xs-12{
@@ -102,6 +102,15 @@
 			margin-top:20px;
 			padding-bottom:15px;
 		}
+		.graywords{
+			color:#A9A9A9;
+		}
+    	.form-control{
+    		border-top-right-radius: 15px; 
+			border-top-left-radius: 15px; 
+			border-bottom-right-radius:15px;
+			border-bottom-left-radius:15px; 
+    	}
     	
     </style>
    
@@ -113,10 +122,13 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
+    <script src="js/distpicker.data.js"></script>
+	<script src="js/distpicker.js"></script>
+	<script src="js/main.js"></script>
 		<div class="container">
 			  
 			<div class="navbar-header">
-			<img src="../img/图标.png" width="180px">
+			<img src="./img/图标.png" width="180px"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
@@ -172,7 +184,7 @@
         		<h1>我的<span style="color:#26AE61;">主页</span></h1>
         	</div>
         	<div class="col-md-5 col-xs-6" style="background-color: #fff;text-align:center;">
-            	<img src="../img/img-1.png" style="width:160px" class="img-responsive center-block">
+            	<img src="./img/img-1.png" style="width:160px" class="img-responsive center-block">
         	</div>
         </div>
 	</div>
@@ -192,170 +204,172 @@
 				</div>
     		</div>
     		</div>
+    		<form>
     		<div class="col-md-8 col-xs-12 shadeblock" style="padding:0px 20px 20px 20px">
     			<div style="width:100%;padding-bottom:10px">
     				<h3><b><span style="color:#26AE61;">个人信息</span>查看与修改</b></h3>
     			</div>
-    			<div style="padding:0px 10px 80px 10px;min-height:650px;width:100%;position:relative">
-    				<!--一条就业信息-->
-    				<div class="row searchresult">
-    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
-    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
-    								<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
-    							</div>
-    							<div style="float:left;margin-left:15px;" class="jobtitle">
-    								<h3><a href="#" class="greenlink">输入职位</a></h3>
-    								<div style="color:#A9A9A9;">输入公司名</div>
-    							</div>
+    			<div style="padding:0px 10px 80px 10px;min-height:650px;width:100%">
+    				<div class="row">
+    					<div class="col-md-5 col-xs-12">
+    						<div class="graywords">姓名</div>
+    						<input type="text" class="form-control" style="height:40px">
+    						<br>
+    					</div>
+    				</div>
+    				
+    				<div class="row">
+    					<div class="col-md-5 col-xs-12">
+    						<div class="graywords">年龄</div>
+    						<div class="input-group">
+    							<input type="text" class="form-control" style="height:40px" 
+    							onkeyup="this.value=this.value.replace(/\D/g,'')" 
+    							onafterpaste="this.value=this.value.replace(/\D/g,'')">
+    							<span class="input-group-addon" 
+    							style="height:40px;">
+    								岁
+    							</span>
     						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9">
-    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9;">
-    							<div 
-									style=
-									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
-										薪资：10k-12k
-								</div>
-    						</div>
-    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;">
-    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    						<br>
+    					</div>
+    					<div class="col-md-4 col-xs-10">
+    						<div class="graywords">性别</div>
+    						<div class="form-group">
+    							<select class="form-control" style="height:39px">
+    								<option>保密</option>
+     						 		<option>男</option>
+      								<option>女</option>
+    							</select>
     						</div>
     					</div>
-    					<!--一条就业信息结束。下面类似-->
-    					
-    					<div class="row searchresult">
-    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
-    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
-    								<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
-    							</div>
-    							<div style="float:left;margin-left:15px;" class="jobtitle">
-    								<h3><a href="#" class="greenlink">输入职位</a></h3>
-    								<div style="color:#A9A9A9;">输入公司名</div>
-    							</div>
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9">
-    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9;">
-    							<div 
-									style=
-									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
-										薪资：10k-12k
-								</div>
-    						</div>
-    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;">
-    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    				</div>
+    				
+    				<div class="row">
+    					<div class="col-md-5 col-xs-10">
+    						<div class="graywords">学历</div>
+    						<div class="form-group">
+    							<select class="form-control" style="height:39px">
+    								<option>保密</option>
+     						 		<option>小学</option>
+      								<option>初中</option>
+      								<option>中专</option>
+      								<option>高中</option>
+      								<option>大专</option>
+      								<option>本科</option>
+      								<option>硕士</option>
+      								<option>博士</option>
+    							</select>
     						</div>
     					</div>
-    					
-    					<div class="row searchresult">
-    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
-    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
-    								<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
-    							</div>
-    							<div style="float:left;margin-left:15px;" class="jobtitle">
-    								<h3><a href="#" class="greenlink">输入职位</a></h3>
-    								<div style="color:#A9A9A9;">输入公司名</div>
-    							</div>
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9">
-    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9;">
-    							<div 
-									style=
-									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
-										薪资：10k-12k
-								</div>
-    						</div>
-    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;">
-    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    				</div>
+    				
+    				<div class="row">
+    					<div class="col-md-12 col-xs-12">
+    						<div class="graywords">专业</div>
+    						<input type="text" class="form-control" style="height:40px">
+    						<br>
+    					</div>
+    				</div>
+    				
+    				<div class="row">
+    					<div class="col-md-5 col-xs-12">
+    						<div class="graywords">工作年限</div>
+    						<div class="input-group">
+    						<input type="text" class="form-control" 
+    						style="height:40px;border-top-right-radius: 0px;border-bottom-right-radius:0px" 
+    						onkeyup="this.value=this.value.replace(/\D/g,'')" 
+    						onafterpaste="this.value=this.value.replace(/\D/g,'')">
+    						<span class="input-group-addon" 
+    						style="height:40px;">
+    							年
+    						</span>
+    					</div>
+    				</div>
+    				
+    					<div class="col-md-5 col-xs-12">
+    						<br>
+    						<div class="input-group">
+    							<input type="text" class="form-control" 
+    							style="height:40px;border-top-right-radius: 0px;border-bottom-right-radius:0px" 
+    							onkeyup="this.value=this.value.replace(/\D/g,'')" 
+    							onafterpaste="this.value=this.value.replace(/\D/g,'')">
+    							<span class="input-group-addon" 
+    							style="height:40px;">
+    								月
+    							</span>
     						</div>
     					</div>
-    					
-    					<div class="row searchresult">
-    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
-    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
-    								<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
-    							</div>
-    							<div style="float:left;margin-left:15px;" class="jobtitle">
-    								<h3><a href="#" class="greenlink">输入职位</a></h3>
-    								<div style="color:#A9A9A9;">输入公司名</div>
-    							</div>
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9">
-    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9;">
-    							<div 
-									style=
-									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
-										薪资：10k-12k
-								</div>
-    						</div>
-    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;">
-    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    				</div>
+    				<br>
+    				
+    				<div class="row">
+    					<div class="col-md-5 col-xs-10">
+    						<div class="graywords">是否全职</div>
+							<div class="form-group">
+    							<select class="form-control" style="height:39px">
+    								<option>无要求</option>
+     						 		<option>仅全职</option>
+      								<option>仅兼职</option>
+    							</select>
     						</div>
     					</div>
-    					
-    					<div class="row searchresult">
-    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
-    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
-    								<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
-    							</div>
-    							<div style="float:left;margin-left:15px;" class="jobtitle">
-    								<h3><a href="#" class="greenlink">输入职位</a></h3>
-    								<div style="color:#A9A9A9;">输入公司名</div>
-    							</div>
+    					<div class="col-md-5 col-xs-12">
+    						<div class="graywords">期望薪资</div>
+    						<div class="input-group">
+    							<input type="text" class="form-control" style="height:40px" 
+    							onkeyup="this.value=this.value.replace(/\D/g,'')" 
+    							onafterpaste="this.value=this.value.replace(/\D/g,'')">
+    							<span class="input-group-addon" 
+    							style="height:40px;">
+    								元 / 月
+    							</span>
     						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9">
-    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
-    						</div>
-    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;color:#A9A9A9;">
-    							<div 
-									style=
-									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
-										薪资：10k-12k
-								</div>
-    						</div>
-    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
-    						style="font-size:15px;">
-    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
-    						</div>
+    						<br>
     					</div>
-    					
-    					<div class="" style="margin-top:20px;width:100%;position:absolute;height:70px;bottom:0px;left:0px">
-    						<nav aria-label="Page navigation">
-    							<ul class="pager">
-    								<li class="previous">
-    									<a href="#"><span aria-hidden="true">&larr;</span>上一页</a>
-    								</li>
-    								<li class="next">
-    									<a href="#">下一页<span aria-hidden="true">&rarr;</span></a>
-    								</li>
-  								</ul>
-    						</nav>
-    						<div class="pagerdiscp">显示第1项到第5项记录，共50项</div>
+    				</div>
+    				
+    				
+    				
+    				<div class="row">
+    					<div class="col-md-12 col-xs-12">
+    						<div class="graywords">期望地点</div>
+    						
+    						<div class="row">
+    						<div data-toggle="distpicker">
+    								<div class="col-md-4 col-xs-10">
+									<div class="form-group">
+	  								<label class="sr-only" for="province1">Province</label>
+	  								<select class="form-control" id="province1" style="height:40px"></select>
+									</div>
+	  								</div>
+	  								<div class="col-md-4 col-xs-10">
+									<div class="form-group">
+	  								<label class="sr-only" for="city1">City</label>
+	  								<select class="form-control" id="city1" style="height:40px"></select>
+									</div>
+									</div>
+									<div class="col-md-4 col-xs-10">
+									<div class="form-group">
+	  								<label class="sr-only" for="district1">District</label>
+	  								<select class="form-control" id="district1" style="height:40px"></select>
+									</div>
+									</div>
+  							</div>
+  							</div>
+    						<br>
     					</div>
-    			
+    				</div>
+    				
+    				<div class="col-md-4 col-xs-12 col-md-push-4">
+    				<button type="submit" class="btn btn-block" style="background-color:#3CB371;height:40px;font-size: 17px;color:#fff">
+				  	保存信息
+					</button>
+    				</div>
+
+    				
     			</div>
     		</div>
-    		
+    		</form>
     	</div>
     
     
@@ -367,7 +381,7 @@
 		<div class="row" style="margin-top:50px;margin-bottom:50px">
 			<div class="col-xs-12 col-md-4">
 				<div>
-					<img src="../img/图标2.png" width="180px">
+					<img src="./img/图标2.png" width="180px">
 				</div>
 				<p style="color:rgb(138,153,179);">
 				You can get the latest employment information in real time here.
