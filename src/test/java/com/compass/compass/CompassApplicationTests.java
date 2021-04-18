@@ -1,9 +1,12 @@
 package com.compass.compass;
 
 import com.compass.compass.dao.DAO;
+import com.compass.compass.dao.UserDAO.UserDao;
 import com.compass.compass.dao.jobInfoDAO.CategoryDao;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Repository;
@@ -21,6 +24,9 @@ class CompassApplicationTests {
     DataSource dataSource;
     @Autowired
     CategoryDao categoryDao;
+    @Autowired
+    UserDao userDao;
+
     @Test
     void contextLoads() throws SQLException {
         System.out.println(dataSource.getConnection().getTransactionIsolation());;
@@ -40,9 +46,11 @@ class CompassApplicationTests {
 
     @Test
     @ParameterizedTest
-    
-    void testLogin(){
-
+    @CsvSource({"'1', '123456'",
+                "'1','123'",
+                "'3',''"})
+    void testLogin(String userId,String password){
+        System.out.println(userDao.checkLogin(userId, password));
     }
 
 

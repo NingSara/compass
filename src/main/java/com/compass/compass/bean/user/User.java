@@ -24,13 +24,15 @@ public class User {
 
     private String wantType;
 
+    public User(){}
+
     public User(String userID, String password, String name,
                 String sex, int age, String major, String degree,
                 String wantCity, String wantWage, String wantType) {
         this.userID = userID;
         this.password = password;
         this.name = name;
-        this.sex = Sex.strToSex(sex);
+        this.sex = Sex.toSex(sex);
         this.age = age;
         this.major = major;
         this.degree = degree;
@@ -68,11 +70,12 @@ public class User {
     }
 
     public void setSex(String sex) {
-        this.sex = Sex.strToSex(sex);
+        this.sex = Sex.toSex(sex);
     }
 
     public void setSex(Sex sex){
         this.sex = sex;
+
     }
 
     public int getAge() {
@@ -123,5 +126,19 @@ public class User {
         this.wantType = wantType;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID='" + userID + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", major='" + major + '\'' +
+                ", degree='" + degree + '\'' +
+                ", wantCity='" + wantCity + '\'' +
+                ", wantWage='" + wantWage + '\'' +
+                ", wantType='" + wantType + '\'' +
+                '}';
+    }
 }

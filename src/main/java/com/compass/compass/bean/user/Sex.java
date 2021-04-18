@@ -13,13 +13,14 @@ public enum Sex {
         this.inChinese = inChinese;
     }
 
-    public static Sex strToSex(String inChinese){
-        if (inChinese.equals(MALE.inChinese)){
+    public static Sex toSex(String sex){
+        if (sex.equals("男")){
             return MALE;
-        }else if (inChinese.equals(FEMALE.inChinese)){
+        }else if (sex.equals("女")){
             return FEMALE;
         }else{
             return null;
         }
     }
+
 }
