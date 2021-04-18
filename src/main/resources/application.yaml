@@ -9,3 +9,13 @@ spring:
       prefix: /WEB-INF/
 #  thymeleaf:
 #    prefix: classpath:/templates/html/
+dao:
+  category:
+    - 工程技术人员
+    - 科学研究人员
+    - 教学人员
+    - 金融业务人员
+    - 经济业务人员
+    - 办事人员和有关人员
+    - 商业和服务业人员
+    - 卫生专业技术人员

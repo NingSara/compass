@@ -129,6 +129,18 @@ public class QueryJobDao extends DAO {
         return jdbcTemplate.query(querySql,new PositionLinkRowMapper(),fromIndex,positionNum);
     }
 
+    public List<PositionLink> queryPositionsOfCategory(String categoryName){
+        String sql = PositionLinkRowMapper.sql + "WHERE positions.type = ? ORDER BY `index` DESC";
+
+        return jdbcTemplate.query(sql, new PositionLinkRowMapper(),categoryName);
+    }
+
+    public List<PositionLink> queryPositionsOfCategory(String categoryName,int fromIndex,int num){
+        String sql = PositionLinkRowMapper.sql + "WHERE positions.type = ? ORDER BY `index` DESC LIMIT ?,?";
+
+        return jdbcTemplate.query(sql, new PositionLinkRowMapper(),categoryName,fromIndex,num);
+    }
+
     /**
      * 查询该用户的收藏夹
      * @param userId

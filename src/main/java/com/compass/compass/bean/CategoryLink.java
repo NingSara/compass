@@ -4,25 +4,35 @@ package com.compass.compass.bean;
  * @author cn
  */
 public class CategoryLink implements Link{
-    private String category;
+    private String categoryName;
 
-    public String getCategory() {
-        return category;
+    private int positionNum;
+
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public int getPositionNum() {
+        return positionNum;
+    }
+
+    public void setPositionNum(int positionNum) {
+        this.positionNum = positionNum;
     }
 
     @Override
     public String getUrl() {
-        return "/category/" + category;
+        return "/category/" + categoryName;
     }
 
     @Override
     public String toString() {
         return "CategoryLink{" +
-                "category='" + category + '\'' +
+                "category='" + categoryName + '\'' +
                 '}';
     }
 }

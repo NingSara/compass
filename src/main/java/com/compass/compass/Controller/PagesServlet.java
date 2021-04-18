@@ -50,11 +50,6 @@ public class PagesServlet {
 
     @RequestMapping("/guessYourLike")
     public String getGuessYourLikePage(Model model,@SessionAttribute(required = false) User user){
-        if (user == null){
-            //重定向至login
-            //TODO 会有很多登录判断，需要想办法抽出来
-            return "redirect:/login";
-        }
         model.addAttribute("guessYourLike", recommendServlet.guessYourLike(user));
         return "guessYouLike.jsp";
     }

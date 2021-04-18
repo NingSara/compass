@@ -18,14 +18,14 @@ public class UserDao extends DAO {
 
     /**
      * TODO 将对象改为object，错误就返回错误信息类
-     * @param userId
+     * @param userID
      * @param password
      * @return
      */
-    public Object checkLogin(String userId,String password){
+    public Object checkLogin(String userID,String password){
         String sql = UserRowMapper.sql + "WHERE userID <=> ?";
         try{
-            User user = jdbcTemplate.queryForObject(sql,new UserRowMapper(),userId);
+            User user = jdbcTemplate.queryForObject(sql,new UserRowMapper(),userID);
             if (user.getPassword().equals(password)){
                 return user;
             }else{

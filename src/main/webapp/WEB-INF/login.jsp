@@ -128,19 +128,19 @@
     		<h3><b>登录信息</b></h3>
     		<br>
     		<br>
-    		<form role="form">
+    		<form role="form" method="post" action="/login">
     			<div class="input-group">
             		<span class="input-group-addon" style="height:40px">
             		<span class="glyphicon glyphicon-user" style="color:#26AE61;"></span>
             		</span>
-            		<input type="text" class="form-control" style="height:40px" placeholder="请输入账号">
+            		<input type="text" class="form-control" name="userID" style="height:40px" placeholder="请输入账号">
         		</div>
         		<br>
     			<div class="input-group">
     				<span class="input-group-addon" style="height:40px">
     				<span class="glyphicon glyphicon-lock" style="color:#26AE61;"></span>
     				</span>
-            		<input type="text" class="form-control" style="height:40px" placeholder="请输入密码">
+            		<input type="password" class="form-control" name="password" style="height:40px" placeholder="请输入密码">
         		</div>
         		<br>
         		<button type="submit" class="btn btn-block" style="background-color:#3CB371;height:40px;font-size: 17px;color:#fff">
