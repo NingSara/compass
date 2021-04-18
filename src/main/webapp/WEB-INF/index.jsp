@@ -190,18 +190,18 @@
     		<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:#26AE61;border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
-            	<span class="glyphicon glyphicon-briefcase" style="color:#fff;height:40px;font-size: 30px"></span>
+            	<span class="glyphicon glyphicon-pencil" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=金融">金融</a></h4><!--此处有超链接，点击后应该可以查看此类职位-->
+            	<h4><a href="category.jsp?categoryName=工程技术人员">工程技术人员</a></h4><!--此处有超链接，点击后应该可以查看此类职位-->
             	<span class="catecount">{5000条}</span>
         	</div>
         	
         	<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:rgb(77,173,245);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
-            	<span class="glyphicon glyphicon-bullhorn" style="color:#fff;height:40px;font-size: 30px"></span>
+            	<span class="glyphicon glyphicon-globe" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=销售">销售</a></h4>
+            	<h4><a href="category.jsp?categoryName=科学研究人员">科学研究人员</a></h4>
             	<span class="catecount">{5000条}</span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock" >
@@ -209,15 +209,15 @@
             	style="height:70px;background-color:rgb(2,138,241);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-book" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=教育/培训">教育/培训</a></h4>
+            	<h4><a href="category.jsp?categoryName=教学人员">教学人员</a></h4>
             	<span class="catecount">{5000条}</span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock" >
             	<div
             	style="height:70px;background-color:rgb(128,0,255);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
-            	<span class="glyphicon glyphicon-globe" style="color:#fff;height:40px;font-size: 30px"></span>
+            	<span class="glyphicon glyphicon-briefcase" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=互联网">互联网</a></h4>
+            	<h4><a href="category.jsp?categoryName=金融业务人员">金融业务人员</a></h4>
             	<span class="catecount">{5000条}</span>
         	</div>
     	</div>
@@ -225,9 +225,9 @@
     		<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:rgb(64,224,208);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
-            	<span class="glyphicon glyphicon-pencil" style="color:#fff;height:40px;font-size: 30px"></span>
+            	<span class="glyphicon glyphicon-bullhorn" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=设计">设计</a></h4>
+            	<h4><a href="category.jsp?categoryName=经济业务人员">经济业务人员</a></h4>
             	<span class="catecount">{5000条}</span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock">
@@ -235,23 +235,23 @@
             	style="height:70px;background-color:rgb(255,128,0);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-home" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=房地产">房地产</a></h4>
+            	<h4><a href="category.jsp?categoryName=办事人员和有关人员">办事人员和有关人员</a></h4>
             	<span class="catecount">{5000条}</span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:rgb(29,100,180);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
-            	<span class="glyphicon glyphicon-heart-empty" style="color:#fff;height:40px;font-size: 30px"></span>
+            	<span class="glyphicon glyphicon-leaf" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=医疗">医疗</a></h4>
+            	<h4><a href="category.jsp?categoryName=商业和服务业人员">商业和服务业人员</a></h4>
             	<span class="catecount">{5000条}</span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:rgb(251,193,240);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
-            	<span class="glyphicon glyphicon-leaf" style="color:#fff;height:40px;font-size: 30px"></span>
+            	<span class="glyphicon glyphicon-heart-empty" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=食品">食品</a></h4>
+            	<h4><a href="category.jsp?categoryName=卫生专业技术人员">卫生专业技术人员</a></h4>
             	<span class="catecount">{5000条}</span>
         	</div>
     	</div>
