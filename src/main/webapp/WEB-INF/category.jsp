@@ -133,15 +133,15 @@
 							按类搜索<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-							<li><a href="category.jsp?categoryName=金融" class="barlink">金融</a></li> 
-							<li><a href="category.jsp?categoryName=销售" class="barlink">销售</a></li> 
-							<li><a href="category.jsp?categoryName=教育/培训" class="barlink">教育/培训</a></li> 
-							<li><a href="category.jsp?categoryName=互联网" class="barlink">互联网</a></li> 
-							<li><a href="category.jsp?categoryName=设计" class="barlink">设计</a></li> 
-							<li><a href="category.jsp?categoryName=房地产" class="barlink">房地产</a></li> 
-							<li><a href="category.jsp?categoryName=医疗" class="barlink">医疗</a></li> 
-							<li><a href="category.jsp?categoryName=食品" class="barlink">食品</a></li> 
-						</ul> 
+							<li><a href="category.jsp?categoryName=工程技术人员" class="barlink">工程技术人员</a></li> 
+							<li><a href="category.jsp?categoryName=科学研究人员" class="barlink">科学研究人员</a></li> 
+							<li><a href="category.jsp?categoryName=教学人员" class="barlink">教学人员</a></li> 
+							<li><a href="category.jsp?categoryName=金融业务人员" class="barlink">金融业务人员</a></li> 
+							<li><a href="category.jsp?categoryName=经济业务人员" class="barlink">经济业务人员</a></li> 
+							<li><a href="category.jsp?categoryName=办事人员和有关人员" class="barlink">办事人员和有关人员</a></li> 
+							<li><a href="category.jsp?categoryName=商业和服务业人员" class="barlink">商业和服务业人员</a></li> 
+							<li><a href="category.jsp?categoryName=卫生专业技术人员" class="barlink">卫生专业技术人员</a></li>  
+						</ul>
 					</li> 
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
@@ -186,29 +186,29 @@
     			<h4 style="padding:10px;padding-left:30px"><b>类别选择</b></h4>
     			<div style="padding:10px 20px 20px 20px;background-color:#fff">
     			<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" <%if(selectedCategory.equals("金融")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=金融" class="greenlinkgray">金融</a>
+					<li role="presentation" <%if(selectedCategory.equals("工程技术人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=工程技术人员" class="greenlinkgray">工程技术人员</a>
 					</li> 
-					<li role="presentation" <%if(selectedCategory.equals("销售")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=销售" class="greenlinkgray">销售</a>
+					<li role="presentation" <%if(selectedCategory.equals("科学研究人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=科学研究人员" class="greenlinkgray">科学研究人员</a>
 					</li> 
-					<li role="presentation" <%if(selectedCategory.equals("教育/培训")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=教育/培训" class="greenlinkgray">教育/培训</a>
+					<li role="presentation" <%if(selectedCategory.equals("教学人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=教学人员" class="greenlinkgray">教学人员</a>
 					</li> 
-					<li role="presentation" <%if(selectedCategory.equals("互联网")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=互联网" class="greenlinkgray">互联网</a>
+					<li role="presentation" <%if(selectedCategory.equals("金融业务人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=金融业务人员" class="greenlinkgray">金融业务人员</a>
 					</li> 
-					<li role="presentation" <%if(selectedCategory.equals("设计")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=设计" class="greenlinkgray">设计</a>
+					<li role="presentation" <%if(selectedCategory.equals("经济业务人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=经济业务人员" class="greenlinkgray">经济业务人员</a>
 					</li> 
-					<li role="presentation" <%if(selectedCategory.equals("房地产")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=房地产" class="greenlinkgray">房地产</a>
+					<li role="presentation" <%if(selectedCategory.equals("办事人员和有关人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=办事人员和有关人员" class="greenlinkgray">办事人员和有关人员</a>
 					</li> 
-					<li role="presentation" <%if(selectedCategory.equals("医疗")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=医疗" class="greenlinkgray">医疗</a>
+					<li role="presentation" <%if(selectedCategory.equals("商业和服务业人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=商业和服务业人员" class="greenlinkgray">商业和服务业人员</a>
 					</li> 
-					<li role="presentation" <%if(selectedCategory.equals("食品")){ %>class="active greenlinkgray"<%} %>>
-						<a href="category.jsp?categoryName=食品" class="greenlinkgray">食品</a>
+					<li role="presentation" <%if(selectedCategory.equals("卫生专业技术人员")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=卫生专业技术人员" class="greenlinkgray">卫生专业技术人员</a>
 					</li> 
 				</ul>
 				</div>
