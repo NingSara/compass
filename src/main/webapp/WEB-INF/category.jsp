@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>猜你喜欢</title>
+    <title>按类搜索</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/navibar.css"/>
@@ -112,6 +112,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <%!String selectedCategory=null; %>
+    <%selectedCategory= request.getParameter("categoryName").trim(); %>
     <div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
 			  
@@ -125,7 +127,7 @@
 			</div> 
 			<div class="collapse navbar-collapse navbar-right" id="navBar"> 
 				<ul class="nav navbar-nav"> 
-					<li><a href="index.jsp" class="barlink">首页</a></li> 
+					<li><a href="index.jsp" class="barlink">首页</a></li>  
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
@@ -138,7 +140,7 @@
 							<li><a href="category.jsp?categoryName=设计" class="barlink">设计</a></li> 
 							<li><a href="category.jsp?categoryName=房地产" class="barlink">房地产</a></li> 
 							<li><a href="category.jsp?categoryName=医疗" class="barlink">医疗</a></li> 
-							<li><a href="category.jsp?categoryName=食品" class="barlink">食品</a></li>  
+							<li><a href="category.jsp?categoryName=食品" class="barlink">食品</a></li> 
 						</ul> 
 					</li> 
 					<li class="dropdown"> 
@@ -150,7 +152,7 @@
 						<li><a href="markedjobs.jsp">职位收藏</a></li> 
 						<li><a href="guessYouLike.jsp">猜你喜欢</a></li> 
 						<li><a href="recommend.jsp">为你推荐</a></li> 
-						</ul>
+						</ul> 
 					</li>
 					<li><a href="#">合作伙伴</a></li> 
 					<li><a href="#">联系我们</a></li>
@@ -169,10 +171,10 @@
     <div class="container bodyup" style="width:100%;margin-bottom:10px">
         <div class="row">
         	<div class="col-md-7 col-xs-6">
-        		<h1>我的<span style="color:#26AE61;">主页</span></h1>
+        		<h1>按类<span style="color:#26AE61;">搜索</span></h1>
         	</div>
         	<div class="col-md-5 col-xs-6" style="background-color: #fff;text-align:center;">
-            	<img src="./img/img-1.png" style="width:160px" class="img-responsive center-block">
+            	<img src="./img/img-2.png" style="width:160px" class="img-responsive center-block">
         	</div>
         </div>
 	</div>
@@ -181,20 +183,40 @@
     	<div class="row mainrow">
     		<div class="col-md-4 col-xs-12 shadeblock" style="margin-bottom:20px;background-color:#F9FCFF;">
     		<div style="background-color:#F9FCFF;width:100%">
-    			<h4 style="padding:10px;padding-left:30px"><b>主页功能</b></h4>
+    			<h4 style="padding:10px;padding-left:30px"><b>类别选择</b></h4>
     			<div style="padding:10px 20px 20px 20px;background-color:#fff">
     			<ul class="nav nav-pills nav-stacked">
-  					<li role="presentation"><a href="myinfo.jsp" class="greenlinkgray">个人信息</a></li>
-  					<li role="presentation"><a href="markedjobs.jsp" class="greenlinkgray">职位收藏</a></li>
-  					<li role="presentation" class="active greenlinkgray"><a href="guessYouLike.jsp" class="greenlinkgray">猜你喜欢</a></li>
-  					<li role="presentation"><a href="recommend.jsp" class="greenlinkgray">为你推荐</a></li>
+					<li role="presentation" <%if(selectedCategory.equals("金融")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=金融" class="greenlinkgray">金融</a>
+					</li> 
+					<li role="presentation" <%if(selectedCategory.equals("销售")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=销售" class="greenlinkgray">销售</a>
+					</li> 
+					<li role="presentation" <%if(selectedCategory.equals("教育/培训")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=教育/培训" class="greenlinkgray">教育/培训</a>
+					</li> 
+					<li role="presentation" <%if(selectedCategory.equals("互联网")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=互联网" class="greenlinkgray">互联网</a>
+					</li> 
+					<li role="presentation" <%if(selectedCategory.equals("设计")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=设计" class="greenlinkgray">设计</a>
+					</li> 
+					<li role="presentation" <%if(selectedCategory.equals("房地产")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=房地产" class="greenlinkgray">房地产</a>
+					</li> 
+					<li role="presentation" <%if(selectedCategory.equals("医疗")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=医疗" class="greenlinkgray">医疗</a>
+					</li> 
+					<li role="presentation" <%if(selectedCategory.equals("食品")){ %>class="active greenlinkgray"<%} %>>
+						<a href="category.jsp?categoryName=食品" class="greenlinkgray">食品</a>
+					</li> 
 				</ul>
 				</div>
     		</div>
     		</div>
-    		<div class="col-md-8 col-xs-12 shadeblock" style="padding:0px 20px 20px 20px;">
-    			<div style="width:100%;padding-bottom:10px;">
-    				<h3><b><span style="color:#26AE61;">猜你喜欢</span>的就业信息</b></h3>
+    		<div class="col-md-8 col-xs-12 shadeblock" style="padding:0px 20px 20px 20px">
+    			<div style="width:100%;padding-bottom:10px">
+    				<h3><b><span style="color:#26AE61;"><%=selectedCategory %></span>相关就业信息</b></h3>
     			</div>
     			<div style="padding:0px 10px 80px 10px;min-height:650px;width:100%;position:relative">
     				<!--一条就业信息-->
@@ -311,7 +333,7 @@
     						</div>
     					</div>
     					
-    					<div class="row searchresult" style="">
+    					<div class="row searchresult">
     						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
     							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
     								<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
@@ -338,10 +360,149 @@
     							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
     						</div>
     					</div>
-    				
+    					
+    					<div class="row searchresult">
+    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
+    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
+    								<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
+    							</div>
+    							<div style="float:left;margin-left:15px;" class="jobtitle">
+    								<h3><a href="#" class="greenlink">输入职位</a></h3>
+    								<div style="color:#A9A9A9;">输入公司名</div>
+    							</div>
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9">
+    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9;">
+    							<div 
+									style=
+									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+										薪资：10k-12k
+								</div>
+    						</div>
+    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;">
+    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    						</div>
+    					</div>
+    					
+    					<div class="row searchresult">
+    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
+    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
+    								<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
+    							</div>
+    							<div style="float:left;margin-left:15px;" class="jobtitle">
+    								<h3><a href="#" class="greenlink">输入职位</a></h3>
+    								<div style="color:#A9A9A9;">输入公司名</div>
+    							</div>
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9">
+    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9;">
+    							<div 
+									style=
+									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+										薪资：10k-12k
+								</div>
+    						</div>
+    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;">
+    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    						</div>
+    					</div>
+    					
+    					<div class="row searchresult">
+    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
+    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
+    								<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
+    							</div>
+    							<div style="float:left;margin-left:15px;" class="jobtitle">
+    								<h3><a href="#" class="greenlink">输入职位</a></h3>
+    								<div style="color:#A9A9A9;">输入公司名</div>
+    							</div>
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9">
+    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9;">
+    							<div 
+									style=
+									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+										薪资：10k-12k
+								</div>
+    						</div>
+    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;">
+    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    						</div>
+    					</div>
+    					
+    					<div class="row searchresult">
+    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
+    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
+    								<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
+    							</div>
+    							<div style="float:left;margin-left:15px;" class="jobtitle">
+    								<h3><a href="#" class="greenlink">输入职位</a></h3>
+    								<div style="color:#A9A9A9;">输入公司名</div>
+    							</div>
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9">
+    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9;">
+    							<div 
+									style=
+									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+										薪资：10k-12k
+								</div>
+    						</div>
+    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;">
+    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    						</div>
+    					</div>
+    					
+    					<div class="row searchresult">
+    						<div class="col-md-4 col-xs-12" style="margin-bottom:10px">
+    							<div style="float:left;margin:5px;width:50px;height:50px;padding-top:13px">
+    								<span class="glyphicon glyphicon-hand-right" style="color:#26AE61;height:40px;font-size: 30px"></span>
+    							</div>
+    							<div style="float:left;margin-left:15px;" class="jobtitle">
+    								<h3><a href="#" class="greenlink">输入职位</a></h3>
+    								<div style="color:#A9A9A9;">输入公司名</div>
+    							</div>
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9">
+    							<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入地点
+    						</div>
+    						<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;color:#A9A9A9;">
+    							<div 
+									style=
+									"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
+										薪资：10k-12k
+								</div>
+    						</div>
+    						<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    						style="font-size:15px;">
+    							<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    						</div>
+    					</div>
     					
     					<div class="" style="margin-top:20px;width:100%;position:absolute;height:70px;bottom:0px;left:0px">
-    						<nav aria-label="Page navigation" style="width:100%;">
+    						<nav aria-label="Page navigation">
     							<ul class="pager">
     								<li class="previous">
     									<a href="#"><span aria-hidden="true">&larr;</span>上一页</a>
@@ -351,7 +512,7 @@
     								</li>
   								</ul>
     						</nav>
-    						<div class="pagerdiscp" style="">显示第1项到第5项，共50000项</div>
+    						<div class="pagerdiscp">显示第1项到第10项记录，共50项</div>
     					</div>
     			
     			</div>
