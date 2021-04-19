@@ -102,4 +102,8 @@ public class Position extends AbstractPosition{
     public String getJobTitle() {
         return relateJob.getTitle();
     }
+
+    public String getCompanyIntroduction() {
+        return relateJob.getCompanyIntroduction();
+    }
 }

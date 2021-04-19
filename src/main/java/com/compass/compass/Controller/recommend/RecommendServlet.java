@@ -15,6 +15,7 @@ import java.util.List;
 public interface RecommendServlet {
     //按照名字，理应是controller，但是由于可能没有对请求响应，所以暂时只是一个component
 
+    //TODO 这里也要按页查询
     /**
      * 根据用户喜好推荐岗位
      * @param user

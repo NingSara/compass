@@ -9,11 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MyInterceptorConfiguration implements WebMvcConfigurer{
     @Autowired
-    LoginStateInterceptor loginStateInterceptor;
+    LoginInterceptor loginInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginStateInterceptor)
+        registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/markedPositions","/guessYourLike","/recommend",
                         "/myInfo","/updateMyInfo");
         //

@@ -33,6 +33,7 @@ public class CategoryLink implements Link{
     public String toString() {
         return "CategoryLink{" +
                 "category='" + categoryName + '\'' +
+                "positionNum=" + positionNum +
                 '}';
     }
 }

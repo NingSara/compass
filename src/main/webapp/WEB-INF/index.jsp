@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.compass.compass.bean.jobInfo.*" %>
+<%@ page import="com.compass.compass.bean.recommend.*" %>
+<%@ page import="com.compass.compass.bean.search.*" %>
+<%@ page import="com.compass.compass.bean.user.*" %>
+<%@ page import="com.compass.compass.bean.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html> 
 <html> 
 <head> 
@@ -80,7 +86,64 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-     
+	<%!
+		User myuser;
+	%>
+	<%
+	myuser=(User)session.getAttribute("user");
+	%>
+<%!
+	List< CategoryLink > catelist;
+	int strarr[]=new int[8];
+	String cateurl[]=new String[8];
+	
+	List< PositionLink > recentlist;
+	List<UserBaseRecommendLink>recommendlist,guesslist;
+	UserBaseRecommendLink guessblock;
+	PositionLink recentblock;
+%>
+	<%
+		catelist = (List<CategoryLink>) session.getAttribute("fixedCategories");
+		int ii=0;
+  		for(Iterator i = catelist.iterator();i.hasNext(); ){
+  			CategoryLink tempc=(CategoryLink) i.next();
+  			strarr[ii] = tempc.getPositionNum() ;
+  			cateurl[ii]=tempc.getUrl();
+			ii++;
+		}
+  		recentlist=(List< PositionLink >)request.getAttribute("recentUpdatePositions");
+		PositionLink recentarr[]=new PositionLink[6];
+		
+		UserBaseRecommendLink guessarr[]=new UserBaseRecommendLink[6];
+		UserBaseRecommendLink recmenndarr[]=new UserBaseRecommendLink[4];
+		
+		ii=0;
+		for(Iterator i=recentlist.iterator();i.hasNext();){
+			recentarr[ii]=(PositionLink)i.next();
+			ii++;
+			if(ii==6)break;
+		}
+  	
+  	if(myuser!=null){
+  		recommendlist=(List< UserBaseRecommendLink>)request.getAttribute("recommendForYou");
+  		guesslist=(List< UserBaseRecommendLink >)request.getAttribute("guessYourLike");
+  		
+
+
+		ii=0;
+		for(Iterator i=recommendlist.iterator();i.hasNext();){
+			recmenndarr[ii]=(UserBaseRecommendLink)i.next();
+			ii++;
+			if(ii==4)break;
+		}
+		ii=0;
+		for(Iterator i=guesslist.iterator();i.hasNext();){
+			guessarr[ii]=(UserBaseRecommendLink)i.next();
+			ii++;
+			if(ii==6)break;
+		}
+  	}
+	%>
 <!--导航--> 
 	<div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
@@ -128,7 +191,11 @@
 						<div 
 						style=
 						"border-radius:25px;background-color:#26AE61;color:#fff;margin:10px 0px 0px 5px;height:30px;width:100px;padding:5px 20px 0px 20px">
-							<a href="login.jsp" class="loginbutton">登录/注册</a>
+							<%if(myuser!=null){%>
+							<a href="" class="loginbutton">您已登录</a>
+							<%}else{%>
+							<a href="login" class="loginbutton">登录/注册</a>
+							<%}%>
 						</div>
 					</li>
 				</ul> 
@@ -192,8 +259,9 @@
             	style="height:70px;background-color:#26AE61;border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-pencil" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=工程技术人员">工程技术人员</a></h4><!--此处有超链接，点击后应该可以查看此类职位-->
-            	<span class="catecount">{5000条}</span>
+            	<%--<h4><a href="category.jsp?categoryName=工程技术人员">工程技术人员</a></h4>--%><!--此处有超链接，点击后应该可以查看此类职位-->
+				<h4><a href="<%=cateurl[0]%>">工程技术人员</a></h4>
+            	<span class="catecount">{<%=strarr[0]%>条}<%--{5000条}--%></span>
         	</div>
         	
         	<div class="col-xs-12 col-md-3 categoryblock">
@@ -201,24 +269,24 @@
             	style="height:70px;background-color:rgb(77,173,245);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-globe" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=科学研究人员">科学研究人员</a></h4>
-            	<span class="catecount">{5000条}</span>
+            	<h4><a href="<%=cateurl[1]%>">科学研究人员</a></h4>
+            	<span class="catecount">{<%=strarr[1]%>条}<%--{5000条}--%></span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock" >
             	<div
             	style="height:70px;background-color:rgb(2,138,241);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-book" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=教学人员">教学人员</a></h4>
-            	<span class="catecount">{5000条}</span>
+            	<h4><a href="<%=cateurl[2]%>">教学人员</a></h4>
+            	<span class="catecount">{<%=strarr[2]%>条}<%--{5000条}--%></span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock" >
             	<div
             	style="height:70px;background-color:rgb(128,0,255);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-briefcase" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=金融业务人员">金融业务人员</a></h4>
-            	<span class="catecount">{5000条}</span>
+            	<h4><a href="<%=cateurl[3]%>">金融业务人员</a></h4>
+            	<span class="catecount">{<%=strarr[3]%>条}<%--{5000条}--%></span>
         	</div>
     	</div>
     	<div class="row">
@@ -227,32 +295,32 @@
             	style="height:70px;background-color:rgb(64,224,208);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-bullhorn" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=经济业务人员">经济业务人员</a></h4>
-            	<span class="catecount">{5000条}</span>
+            	<h4><a href="<%=cateurl[4]%>">经济业务人员</a></h4>
+            	<span class="catecount">{<%=strarr[4]%>条}<%--{5000条}--%></span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:rgb(255,128,0);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-home" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=办事人员和有关人员">办事人员和有关人员</a></h4>
-            	<span class="catecount">{5000条}</span>
+            	<h4><a href="<%=cateurl[5]%>">办事人员和有关人员</a></h4>
+            	<span class="catecount">{<%=strarr[5]%>条}<%--{5000条}--%></span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:rgb(29,100,180);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-leaf" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=商业和服务业人员">商业和服务业人员</a></h4>
-            	<span class="catecount">{5000条}</span>
+            	<h4><a href="<%=cateurl[6]%>">商业和服务业人员</a></h4>
+            	<span class="catecount">{<%=strarr[6]%>条}<%--{5000条}--%></span>
         	</div>
         	<div class="col-xs-12 col-md-3 categoryblock">
             	<div
             	style="height:70px;background-color:rgb(251,193,240);border-radius: 50%;width:70px;padding-top:17px;display:inline-block">
             	<span class="glyphicon glyphicon-heart-empty" style="color:#fff;height:40px;font-size: 30px"></span>
             	</div>
-            	<h4><a href="category.jsp?categoryName=卫生专业技术人员">卫生专业技术人员</a></h4>
-            	<span class="catecount">{5000条}</span>
+            	<h4><a href="<%=cateurl[7]%>">卫生专业技术人员</a></h4>
+            	<span class="catecount">{<%=strarr[7]%>条}<%--{5000条}--%></span>
         	</div>
     	</div>
     	
@@ -261,64 +329,87 @@
 <!--按类搜索部分结束-->
 
 <!--猜你喜欢部分-->
+	<%if(myuser!=null){%>
 <div style="width:100%;padding-top:20px;padding-bottom:30px">
 	<div class="container">
 		<h1 style="text-align:center">猜你喜欢</h1>
     	<h5 style="color:#C0C0C0;text-align:center;margin-bottom:15px">专属我的职位选择 发现最合心意的工作</h5>
     	<div class="row guessrow">
-    	
+ 
         <!--猜你喜欢中的一个职位卡片-->
+			<%
+			guessblock=guessarr[0];
+			%>
     	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:#26AE61;font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
+    			<h3><a href="<%=guessblock.getUrl()%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
     			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%--<%=guessblock.getCompanyName()%>--%><%--输入公司名--%>
     			</div>
     			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
     			</div>
-    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    			<span class="label label-success">&nbsp;&nbsp;<%=guessblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	<!--职位卡片结束。下面类似。一共6个卡片-->
-
+		
+			<%
+				guessblock=guessarr[1];
+			%>
     	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(77,173,245);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
+    			<h3><a href="<%=guessblock.getUrl()%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
     			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%--<%=guessblock.getCompanyName()%>--%><%--输入公司名--%>
     			</div>
     			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
     			</div>
-    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
+    			<span class="label label-primary">&nbsp;&nbsp;<%=guessblock.getType()%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
-    	
+			<%
+				guessblock=guessarr[2];
+			%>
     	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(29,100,180);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
+    			<h3><a href="<%=guessblock.getUrl()%>">
+					<%=guessblock.getName()%><%--输入职位名--%>
+				</a></h3>
     			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%--<%=guessblock.getCompanyName()%>--%><%--输入公司名--%>
     			</div>
     			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
     			</div>
-    			<span class="label label-warning">&nbsp;&nbsp;兼职&nbsp;&nbsp;</span>
+    			<span class="label label-warning">&nbsp;&nbsp;<%=guessblock.getType()%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	
     	</div>
-    	
+		
+		<%
+			guessblock=guessarr[3];
+		%>
+		
 		<div class="row guessrow">
 		
 			<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;margin-right:40px;padding-top:10px;padding-bottom:20px;margin-top:15px">
@@ -326,14 +417,18 @@
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(128,0,255);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
+    			<h3><a href="<%=guessblock.getUrl()%>">
+					<%=guessblock.getName()%><%--输入职位名--%>
+				</a></h3>
     			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%--<%=guessblock.getCompanyName()%>--%><%--输入公司名--%>
     			</div>
     			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
     			</div>
-    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    			<span class="label label-success">&nbsp;&nbsp;<%=guessblock.getType()%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	
@@ -341,32 +436,44 @@
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(64,224,208);font-size:50px"></span>
     		</div>
-    		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
-    		</div>
+			<%
+				guessblock=guessarr[4];
+			%>
+			<div style="float:left;margin-left:10px" class="guessblock">
+				<h3><a href="<%=guessblock.getUrl()%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%--<%=guessblock.getCompanyName()%>--%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-primary">&nbsp;&nbsp;<%=guessblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
+			</div>
     	</div>
     	
     	<div class="col-xs-12 col-md-4" style="box-shadow: 0px 0px 5px 5px #F5F5F5 ;padding-top:10px;padding-bottom:20px;margin-top:15px">
     		<div style="float:left;margin:10px;box-shadow: 0px 0px 5px 5px #F5F5F5;width:70px;height:70px;text-align:center;padding-top:13px">
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(255,128,0);font-size:50px"></span>
     		</div>
-    		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-warning">&nbsp;&nbsp;兼职&nbsp;&nbsp;</span>
-    		</div>
+			<%
+				guessblock=guessarr[5];
+			%>
+			<div style="float:left;margin-left:10px" class="guessblock">
+				<h3><a href="<%=guessblock.getUrl()%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%--<%=guessblock.getCompanyName()%>--%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-warning">&nbsp;&nbsp;<%=guessblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
+			</div>
     	</div>
 			
 		</div>
@@ -383,7 +490,9 @@
 	</div>
 </div>
 <!--猜你喜欢部分结束-->
-
+	<%}%>
+	
+	<%if(myuser!=null){%>
 <!--为你推荐部分-->
 <div style="background-color:#F9FCFF;width:100%;padding-top:20px;padding-bottom:40px">
 	<div class="container">
@@ -400,14 +509,18 @@
     			<span class="glyphicon glyphicon-fire" style="color:rgb(64,224,208);font-size:55px"></span>
     		</div>
     		<div style="float:left;margin-left:10px;border-left:1px solid #DCDCDC;padding-left:30px;max-width:400px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
+				<%guessblock=recmenndarr[0];%>
+    			<h3><a href="<%=guessblock.getUrl()%>%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
     			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getCompanyName()%><%--输入公司名--%>
     			</div>
     			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
     			</div>
-    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    			<span class="label label-success">&nbsp;&nbsp;<%=guessblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
         <!--职位卡片结束。下面类似。一共有4个卡片-->
@@ -418,14 +531,18 @@
     			<span class="glyphicon glyphicon-fire" style="color:rgb(255,128,0);font-size:55px"></span>
     		</div>
     		<div style="float:left;margin-left:10px;border-left:1px solid #DCDCDC;padding-left:30px;max-width:400px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
+				<%guessblock=recmenndarr[1];%>
+				<h3><a href="<%=guessblock.getUrl()%>%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-primary">&nbsp;&nbsp;<%=guessblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	</div>
@@ -440,14 +557,18 @@
     			<span class="glyphicon glyphicon-fire" style="color:rgb(29,100,180);font-size:55px"></span>
     		</div>
     		<div style="float:left;margin-left:10px;border-left:1px solid #DCDCDC;padding-left:30px;max-width:400px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+				<%guessblock=recmenndarr[2];%>
+				<h3><a href="<%=guessblock.getUrl()%>%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-success">&nbsp;&nbsp;<%=guessblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	
@@ -457,14 +578,18 @@
     			<span class="glyphicon glyphicon-fire" style="color:rgb(251,193,240);font-size:55px"></span>
     		</div>
     		<div style="float:left;margin-left:10px;border-left:1px solid #DCDCDC;padding-left:30px;max-width:400px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
+				<%guessblock=recmenndarr[3];%>
+				<h3><a href="<%=guessblock.getUrl()%>%>">
+					<%=guessblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=guessblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-primary">&nbsp;&nbsp;<%=guessblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	</div>
@@ -479,7 +604,8 @@
 		</div>
 	</div>
 </div>
-
+	<%}%>
+	
 <!--最新信息部分-->
 <div style="width:100%;padding-top:20px;padding-bottom:50px">
 	<div class="container">
@@ -493,14 +619,18 @@
     			<span class="glyphicon glyphicon-thumbs-up" style="color:#26AE61;font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
+				<%recentblock=recentarr[0];%>
+    			<h3><a href="<%=recentblock.getUrl()%>">
+					<%=recentblock.getName()%><%--输入职位名--%></a></h3>
     			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
+    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getCompanyName()%><%--输入公司名--%>
     			</div>
     			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getPlace()%><%--输入公司地点--%>
     			</div>
-    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+    			<span class="label label-success">&nbsp;&nbsp;<%=recentblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	<!--职位卡片结束。下面类似。一共6个卡片-->
@@ -510,14 +640,18 @@
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(77,173,245);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
+				<%recentblock=recentarr[1];%>
+				<h3><a href="<%=recentblock.getUrl()%>">
+					<%=recentblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-primary">&nbsp;&nbsp;<%=recentblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	
@@ -526,14 +660,18 @@
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(29,100,180);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-warning">&nbsp;&nbsp;兼职&nbsp;&nbsp;</span>
+				<%recentblock=recentarr[2];%>
+				<h3><a href="<%=recentblock.getUrl()%>">
+					<%=recentblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-warning">&nbsp;&nbsp;<%=recentblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	
@@ -546,14 +684,18 @@
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(128,0,255);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-success">&nbsp;&nbsp;全职&nbsp;&nbsp;</span>
+				<%recentblock=recentarr[3];%>
+				<h3><a href="<%=recentblock.getUrl()%>">
+					<%=recentblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-success">&nbsp;&nbsp;<%=recentblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	
@@ -562,14 +704,18 @@
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(64,224,208);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-primary">&nbsp;&nbsp;实习&nbsp;&nbsp;</span>
+				<%recentblock=recentarr[4];%>
+				<h3><a href="<%=recentblock.getUrl()%>">
+					<%=recentblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-primary">&nbsp;&nbsp;<%=recentblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
     	
@@ -578,14 +724,18 @@
     			<span class="glyphicon glyphicon-thumbs-up" style="color:rgb(255,128,0);font-size:50px"></span>
     		</div>
     		<div style="float:left;margin-left:10px" class="guessblock">
-    			<h3><a href="">输入职位名</a></h3>
-    			<div style="margin-top:10px">
-    				<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司名
-    			</div>
-    			<div style="margin-bottom:5px;margin-top:5px">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;输入公司地点
-    			</div>
-    			<span class="label label-warning">&nbsp;&nbsp;兼职&nbsp;&nbsp;</span>
+				<%recentblock=recentarr[5];%>
+				<h3><a href="<%=recentblock.getUrl()%>">
+					<%=recentblock.getName()%><%--输入职位名--%></a></h3>
+				<div style="margin-top:10px">
+					<span class="glyphicon glyphicon-tag" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getCompanyName()%><%--输入公司名--%>
+				</div>
+				<div style="margin-bottom:5px;margin-top:5px">
+					<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=recentblock.getPlace()%><%--输入公司地点--%>
+				</div>
+				<span class="label label-warning">&nbsp;&nbsp;<%=recentblock.getType()%><%--全职--%>&nbsp;&nbsp;</span>
     		</div>
     	</div>
 			

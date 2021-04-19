@@ -39,11 +39,12 @@ public class LoginServlet {
         if (obj instanceof User){
             //返回User对象就说明没问题
             session.setAttribute("user", obj);
-            return "forward:/index";
+            return "redirect:/index";
         }else{
             //返回的不是user对象就是String对象，直接就是错误信息
             model.addAttribute("errorMes", obj);
-            return "forward:/loginErrorMes";
+//            return "forward:/loginErrorMes";
+            return "forward:/login";
         }
     }
 

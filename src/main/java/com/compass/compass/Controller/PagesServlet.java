@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 这是一个返回各种页面的Servlet
  * 处理仅仅显示内容而没有其他增删改功能的请求的响应
@@ -22,14 +24,20 @@ public class PagesServlet {
     @Autowired
     RecommendServlet recommendServlet;
     @Autowired
+    CategoryServlet categoryServlet;
+    @Autowired
     QueryJobDao queryJobDao;
     @Autowired
     CategoryDao categoryDao;
 
     @RequestMapping("/index")
-    public String indexPage(Model model,@SessionAttribute(required = false) User user){
+    public String indexPage(Model model, @SessionAttribute(required = false) User user, HttpSession session){
         //从dao或者其他地方获取系统中的工作的分类，这里的分类应该是position的分类
-        model.addAttribute("categories", categoryDao.queryMostNCategories(10));
+//        model.addAttribute("categories", categoryDao.queryMostNCategories(10));
+        //TODO 固定的一些类别，可能需要每个页面都查询一个，所以放在session里，每次访问index时更新
+
+        session.setAttribute("fixedCategories", categoryDao.queryFixedCategories());
+
         //从dao获取最近发布的招聘信息推荐,（要不要也加个热门推荐）
         model.addAttribute("recentUpdatePositions", queryJobDao.queryRecentUpdatePositions(10));
         //判断是否为登录状态，向RecommendServlet请求推荐
@@ -42,6 +50,9 @@ public class PagesServlet {
 
     @RequestMapping(value = "/positionInfo/{positionIndex}",method = RequestMethod.GET)
     public String positionInfoPage(Model model, @PathVariable(name = "positionIndex") Long positionIndex){
+        if (positionIndex == 0){
+            //如果为0 就用一些随便set
+        }
         Position position = queryJobDao.queryPositionByIndex(positionIndex);
         model.addAttribute("position",position);
         model.addAttribute("positionBaseRecommends", recommendServlet.similarPositionRecommends(position));

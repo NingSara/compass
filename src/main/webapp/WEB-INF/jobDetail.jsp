@@ -1,5 +1,12 @@
+<%@ page import="com.compass.compass.bean.jobInfo.Position" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
+<%@ page import="com.compass.compass.bean.jobInfo.*" %>
+<%@ page import="com.compass.compass.bean.recommend.*" %>
+<%@ page import="com.compass.compass.bean.search.*" %>
+<%@ page import="com.compass.compass.bean.user.*" %>
+<%@ page import="com.compass.compass.bean.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -10,8 +17,8 @@
     <title>job detail</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/navibar.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/footer.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/navibar.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/footer.css"/>
     <style type="text/css">
     	@media (max-width: 768px){
     		.alignblock{
@@ -91,12 +98,25 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-    
+	<%!
+		User myuser;
+	%>
+	<%
+		myuser=(User)session.getAttribute("user");
+	%>
+	<%!
+	Position theposition;
+	List< PositionBaseRecommendLink > similarlist;
+	%>
+	<%
+		theposition=(Position) request.getAttribute("position");
+		similarlist=( List< PositionBaseRecommendLink >)request.getAttribute("positionBaseRecommends");
+	%>
     <!--导航-->
     <div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
 			<div class="navbar-header">
-			<img src="./img/图标.png" width="180px"> 
+			<img src="/img/图标.png" width="180px">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
@@ -110,7 +130,8 @@
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
 						</a> 
-						<ul class="dropdown-menu" role="menu"> 
+						<ul class="dropdown-menu" role="menu">
+							
 							<li><a href="category.jsp?categoryName=工程技术人员" class="barlink">工程技术人员</a></li> 
 							<li><a href="category.jsp?categoryName=科学研究人员" class="barlink">科学研究人员</a></li> 
 							<li><a href="category.jsp?categoryName=教学人员" class="barlink">教学人员</a></li> 
@@ -120,7 +141,11 @@
 							<li><a href="category.jsp?categoryName=商业和服务业人员" class="barlink">商业和服务业人员</a></li> 
 							<li><a href="category.jsp?categoryName=卫生专业技术人员" class="barlink">卫生专业技术人员</a></li>  
 						</ul> 
-					</li> 
+					</li>
+					<%
+						Position position = (Position) request.getAttribute("position");
+						
+					%>
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 						我的主页<span class="caret"></span> 
@@ -138,7 +163,11 @@
 						<div 
 						style=
 						"border-radius:25px;background-color:#26AE61;color:#fff;margin:10px 0px 0px 5px;height:30px;width:100px;padding:5px 20px 0px 20px">
-							<a href="login.jsp" class="loginbutton">登录/注册</a>
+							<%if(myuser!=null){%>
+							<a href="" class="loginbutton">您已登录</a>
+							<%}else{%>
+							<a href="login" class="loginbutton">登录/注册</a>
+							<%}%>
 						</div>
 					</li>
 				</ul> 
@@ -151,7 +180,7 @@
         		<h1><span style="color:#26AE61;">关于</span><br class="bodyupbr">这个职位</h1>
         	</div>
         	<div class="col-md-5 col-xs-6" style="background-color: #fff;text-align:center;">
-            	<img src="./img/search.png" style="width:160px" class="img-responsive center-block">
+            	<img src="/img/search.png" style="width:160px" class="img-responsive center-block">
         	</div>
         </div>
 	</div>
@@ -163,25 +192,30 @@
     					<span class="glyphicon glyphicon-hand-right" style="color:rgb(2,138,241);height:40px;font-size: 30px"></span>
     				</div>
     				<div style="float:left;margin-left:30px;max-width:220px">
-    					<h3><a href="#" class="greenlink">JAVA开发初级工程师</a></h3>
-    					<div style="color:#A9A9A9;">银联商务股份有限公司</div>
+    					<h3><a href="" class="greenlink">
+							<%=position.getName()%><%--JAVA开发初级工程师--%>
+						</a></h3>
+    					<div style="color:#A9A9A9;">
+							<%=position.getCompanyName()%><%--银联商务股份有限公司--%>
+						</div>
     				</div>
     			</div>
     			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
     			style="font-size:15px;color:#A9A9A9;">
-    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;济南-高新区
+    				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
+					<%=position.getPlace()%><%--济南-高新区--%>
     			</div>
     			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
     			style="font-size:15px;color:#A9A9A9;">
     				<div 
 						style=
 						"border-radius:20px;background-color:rgb(213,255,231);color:#26AE61;margin:-2px 0px 0px -8px;width:auto;display:inline-block;padding:5px 10px">
-							薪资：10k-12k
+						<%=position.getWage()%><%--薪资：10k-12k--%>
 					</div>
     			</div>
     			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
     			style="font-size:15px;">
-    				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;校招&nbsp;&nbsp;</span>
+    				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;<%=position.getType()%><%--校招--%>&nbsp;&nbsp;</span>
     			</div>
     	</div>
     </div>
@@ -192,34 +226,6 @@
     	<div class="row" style="margin-top:10px">
     		<div class="col-md-12 col-xs-12" style="padding-left:10px;">
     			<div style="float:left;margin:10px;padding-top:13px;">
-                    <!--需要更改颜色的地方1-->
-    				<span class="glyphicon glyphicon-book" style="color:rgb(77,173,245);height:40px;font-size: 30px"></span>
-    			</div>
-    			<div class="detailblock">
-                    <!--需要更改颜色的地方2-->
-    				<h3>职位<span style="color:rgb(77,173,245);">介绍</span></h3>
-    			</div>
-    		</div>
-    		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">
-    			岗位职责：
-    			<br>
-    			1、负责系统后端开发工作，根据任务需求完成独立模块的开发；
-    			<br>
-    			2、参与软件需求分析，进行模块设计、代码编写、测试等工作，对软件质量负责；
-    			<br>
-    			3、参与软件需求与设计审核和代码检查；
-    			<br>4、根据设计文档或需求说明完成代码编写，调试，测试和维护；
-    			<br>
-    			5、分析并解决软件开发过程中的问题。
-    			</div>
-    		</div>
-    	</div>
-    	<!--一个详细内容条目结束。下面类似-->
-
-    	<div class="row" style="margin-top:10px">
-    		<div class="col-md-12 col-xs-12" style="padding-left:10px;">
-    			<div style="float:left;margin:10px;padding-top:13px;">
     				<span class="glyphicon glyphicon-time" style="color:#3CB371;height:40px;font-size: 30px"></span>
     			</div>
     			<div class="detailblock">
@@ -227,9 +233,13 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">2021年3月-2099年10月</div>
+    			<div style="color:#A9A9A9;font-size:17px">
+					<%=position.getBeginDate()%>-<%=position.getEndDate()%><%--2021年3月-2099年10月--%>
+				</div>
     		</div>
     	</div>
+	
+		<!--一个详细内容条目结束。下面类似-->
     	
     	<div class="row" style="margin-top:10px">
     		<div class="col-md-12 col-xs-12" style="padding-left:10px;">
@@ -242,12 +252,13 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-				1、.熟悉常用的Java语言，有javaWeb项目开发经验。
+					<%=position.getRequire()%>
+				<%--1、.熟悉常用的Java语言，有javaWeb项目开发经验。
 				2、熟练掌握Oracle、MySQL等数据库开发。
 3、熟练使用Hibernate、Spring等框架进行整合项目开发。
 4、能使用svn、 Maven等代码管理方式；
 5、具有规范化、标准化的代码编写习惯，撰写技术文档的能力；
-6、熟悉基本的软件开发流程，有良好的沟通能力和团队合作能力。
+6、熟悉基本的软件开发流程，有良好的沟通能力和团队合作能力。--%>
     			</div>
     		</div>
     	</div>
@@ -262,7 +273,9 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">济南高新区 舜风路1006-5号</div>
+    			<div style="color:#A9A9A9;font-size:17px">
+					<%=position.getPlace()%><%--济南高新区 舜风路1006-5号--%>
+				</div>
     		</div>
     	</div>
     	
@@ -277,8 +290,10 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			五险一金，补充医疗保险，餐饮补贴，通讯补贴，绩效奖金，定期体检
-    			薪资：10k-15k
+    			福利：<br>
+					<%=position.getJobWelfare()%>
+    			<br>薪资：<br>
+					<%=position.getWage()%>
     			</div>
     		</div>
     	</div>
@@ -294,7 +309,7 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			10人
+    			<%=position.getQuantity()%><%--10人--%>
     			</div>
     		</div>
     	</div>
@@ -309,7 +324,10 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">济南高新区 舜风路1006-5号</div>
+    			<div style="color:#A9A9A9;font-size:17px">
+					<%=position.getJobDeliverUrl()%>
+					<%--济南高新区 舜风路1006-5号--%>
+				</div>
     		</div>
     	</div>
     	
@@ -323,7 +341,9 @@
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
-    			<div style="color:#A9A9A9;font-size:17px">www.baidu.com</div>
+    			<div style="color:#A9A9A9;font-size:17px">
+					<%=position.getJobEmployUrl()%><%--www.baidu.com--%>
+				</div>
     		</div>
     	</div>
     	
@@ -338,7 +358,8 @@
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			银联商务股份有限公司（简称：银联商务）
+					<%=position.getCompanyIntroduction()%>
+    			<%--银联商务股份有限公司（简称：银联商务）
     			是中国银联控股的，专门从事线下、互联网以及移动支付的综合支付与信息服务机构，
     			成立于2002年12月，总部设在上海市浦东新区。
     			银联商务是首批获得人民银行《支付业务许可证》的支付机构，也是人民银行确定的21家重点支付机构之一。
@@ -350,7 +371,7 @@
     在全国形成专业化、全方位的服务态势。截至2020年2月末，银联商务已在全国除台湾以外的所有省级行政区设立机构，实体服务网络覆盖全国所有的地级以上城市，
     覆盖率达100%，全辖员工超万人，服务特约商户793.9万家；2019年受理各类交易127.3亿笔、15万亿元，是国内规模***的综合支付服务机构之一。 
     2019年公司荣获“2019胡润中国新金融50强”、“中国智慧城市发展十周年领军企业”、
-    “2019创新互联网企业TOP100”、“2019中国金融机构金牌榜·金龙奖”年度***金融科技创新公司等众多奖项。
+    “2019创新互联网企业TOP100”、“2019中国金融机构金牌榜·金龙奖”年度***金融科技创新公司等众多奖项。--%>
 
     			</div>
     		</div>
@@ -446,7 +467,7 @@
 		<div class="row" style="margin-top:50px;margin-bottom:50px">
 			<div class="col-xs-12 col-md-4">
 				<div>
-					<img src="./img/图标2.png" width="180px">
+					<img src="/img/图标2.png" width="180px">
 				</div>
 				<p style="color:rgb(138,153,179);">
 				You can get the latest employment information in real time here.

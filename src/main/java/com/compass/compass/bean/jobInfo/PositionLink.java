@@ -24,4 +24,5 @@ public class PositionLink extends AbstractPosition implements Link {
         return relateJob.getCompanyName();
     }
 
+
 }

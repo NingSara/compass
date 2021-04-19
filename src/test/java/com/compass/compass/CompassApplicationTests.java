@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,6 +52,22 @@ class CompassApplicationTests {
                 "'3',''"})
     void testLogin(String userId,String password){
         System.out.println(userDao.checkLogin(userId, password));
+    }
+
+    @Test
+    void testCategoryQuery(){
+        System.out.println(categoryDao.queryFixedCategories().toString());
+    }
+
+    @Transactional
+    @Test
+    @ParameterizedTest
+    @CsvSource({
+            "'1','123456'",
+            "'cn','123456'"
+    })
+    void testRegister(String userId,String password){
+        System.out.println(userDao.tryRegister(userId, password));
     }
 
 

@@ -2,6 +2,7 @@ package com.compass.compass.dao.UserDAO;
 
 import com.compass.compass.bean.user.User;
 import com.compass.compass.dao.DAO;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
@@ -36,6 +37,22 @@ public class UserDao extends DAO {
         }
 
     }
+
+    public Object tryRegister(String userID,String password){
+        String sql = "INSERT INTO user_info(userID,password) VALUES(?,?)";
+
+        try {
+            jdbcTemplate.update(sql,userID,password);
+            User user = new User();
+            user.setUserID(userID);
+            user.setPassword(password);
+            return user;
+        } catch (DataAccessException e) {
+            return e.getMessage();
+        }
+    }
+
+
 
 }
 
