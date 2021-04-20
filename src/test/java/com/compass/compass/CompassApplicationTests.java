@@ -3,6 +3,7 @@ package com.compass.compass;
 import com.compass.compass.dao.DAO;
 import com.compass.compass.dao.UserDAO.UserDao;
 import com.compass.compass.dao.jobInfoDAO.CategoryDao;
+import com.compass.compass.dao.jobInfoDAO.QueryJobDao;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -27,6 +28,8 @@ class CompassApplicationTests {
     CategoryDao categoryDao;
     @Autowired
     UserDao userDao;
+    @Autowired
+    QueryJobDao queryJobDao;
 
     @Test
     void contextLoads() throws SQLException {
@@ -70,5 +73,8 @@ class CompassApplicationTests {
         System.out.println(userDao.tryRegister(userId, password));
     }
 
-
+    @Test
+    void testPositionQuery(){
+        System.out.println(queryJobDao.queryRecentUpdatePositions(10).toString());
+    }
 }

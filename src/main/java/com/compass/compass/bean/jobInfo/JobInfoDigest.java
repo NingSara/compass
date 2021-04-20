@@ -98,6 +98,7 @@ public class JobInfoDigest {
                 ", type='" + type + '\'' +
                 ", beginDate='" + beginDate + '\'' +
                 ", endDate='" + endDate + '\'' +
+                ", companyName='" + companyName +  "'" +
                 '}';
     }
 }

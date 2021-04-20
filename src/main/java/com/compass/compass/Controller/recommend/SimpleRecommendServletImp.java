@@ -23,7 +23,7 @@ public class SimpleRecommendServletImp implements RecommendServlet {
     QueryJobDao queryJobDao;
 
     @Override
-    public List<UserBaseRecommendLink> guessYourLike(User user) {
+    public List<UserBaseRecommendLink> guessYourLikeOfIndex(User user) {
         ArrayList<UserBaseRecommendLink> recommendLinks = new ArrayList<>();
 
         for (int i = 0;i < 6;i++){
@@ -42,8 +42,8 @@ public class SimpleRecommendServletImp implements RecommendServlet {
     }
 
     @Override
-    public List<UserBaseRecommendLink> recommendForYou(User user) {
-        return guessYourLike(user);
+    public List<UserBaseRecommendLink> recommendForYouOfIndex(User user) {
+        return guessYourLikeOfIndex(user);
     }
 
     @Override

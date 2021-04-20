@@ -24,5 +24,18 @@ public class PositionLink extends AbstractPosition implements Link {
         return relateJob.getCompanyName();
     }
 
-
+    @Override
+    public String toString() {
+        return "PositionLink{" +
+                "relateJob=" + relateJob +
+                ", positionIndex=" + positionIndex +
+                ", jobId=" + jobId +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", degree='" + degree + '\'' +
+                ", place='" + place + '\'' +
+                ", wage='" + wage + '\'' +
+                ", quantity='" + quantity + '\'' +
+                '}';
+    }
 }

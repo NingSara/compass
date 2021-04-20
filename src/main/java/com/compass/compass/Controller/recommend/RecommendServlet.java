@@ -17,18 +17,22 @@ public interface RecommendServlet {
 
     //TODO 这里也要按页查询
     /**
-     * 根据用户喜好推荐岗位
+     * 主页中根据用户喜好推荐岗位
+     * 至少返回6个
      * @param user
      * @return
      */
-    public List<UserBaseRecommendLink> guessYourLike(User user);
+    public List<UserBaseRecommendLink> guessYourLikeOfIndex(User user);
+
+//    public List<UserBaseRecommendLink> guessYourLike
 
     /**
-     * 根据用户特点，能力推荐岗位
+     * 主页中根据用户特点，能力推荐岗位
+     * 至少返回4
      * @param user
      * @return
      */
-    public List<UserBaseRecommendLink> recommendForYou(User user);
+    public List<UserBaseRecommendLink> recommendForYouOfIndex(User user);
 
     /**
      *

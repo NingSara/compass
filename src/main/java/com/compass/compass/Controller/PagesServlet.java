@@ -42,8 +42,8 @@ public class PagesServlet {
         model.addAttribute("recentUpdatePositions", queryJobDao.queryRecentUpdatePositions(10));
         //判断是否为登录状态，向RecommendServlet请求推荐
         if (user != null){
-            model.addAttribute("guessYourLike", recommendServlet.guessYourLike(user));
-            model.addAttribute("recommendForYou",recommendServlet.recommendForYou(user));
+            model.addAttribute("guessYourLike", recommendServlet.guessYourLikeOfIndex(user));
+            model.addAttribute("recommendForYou",recommendServlet.recommendForYouOfIndex(user));
         }
         return "index.jsp";
     }
@@ -61,12 +61,14 @@ public class PagesServlet {
 
     @RequestMapping("/guessYourLike")
     public String getGuessYourLikePage(Model model,@SessionAttribute(required = false) User user){
-        model.addAttribute("guessYourLike", recommendServlet.guessYourLike(user));
+        model.addAttribute("guessYourLike", recommendServlet.guessYourLikeOfIndex(user));
         return "guessYouLike.jsp";
     }
 
     @RequestMapping("/recommend")
     public String recommendPositionsPage(){
+
+
         return "recommend.jsp";
     }
 

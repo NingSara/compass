@@ -201,6 +201,7 @@ class PositionLinkRowMapper implements RowMapper<PositionLink>{
         PositionLink positionLink = new PositionLink();
         positionLink.setPositionIndex(rs.getLong("index"));
         positionLink.setJobId(jobId);
+        positionLink.setName(rs.getString("name"));
         positionLink.setType(rs.getString("type"));
         positionLink.setDegree(rs.getString("degree"));
         positionLink.setPlace(rs.getString("place"));
