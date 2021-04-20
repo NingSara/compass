@@ -149,7 +149,7 @@
 		<div class="container">
 			  
 			<div class="navbar-header">
-			<img src="./img/图标.png" width="180px"> 
+			<img src="/img/图标.png" width="180px"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
@@ -158,20 +158,20 @@
 			</div> 
 			<div class="collapse navbar-collapse navbar-right" id="navBar"> 
 				<ul class="nav navbar-nav"> 
-					<li><a href="index.jsp" class="barlink">首页</a></li> 
+					<li><a href="index" class="barlink">首页</a></li> 
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-							<li><a href="category.jsp?categoryName=工程技术人员" class="barlink">工程技术人员</a></li> 
-							<li><a href="category.jsp?categoryName=科学研究人员" class="barlink">科学研究人员</a></li> 
-							<li><a href="category.jsp?categoryName=教学人员" class="barlink">教学人员</a></li> 
-							<li><a href="category.jsp?categoryName=金融业务人员" class="barlink">金融业务人员</a></li> 
-							<li><a href="category.jsp?categoryName=经济业务人员" class="barlink">经济业务人员</a></li> 
-							<li><a href="category.jsp?categoryName=办事人员和有关人员" class="barlink">办事人员和有关人员</a></li> 
-							<li><a href="category.jsp?categoryName=商业和服务业人员" class="barlink">商业和服务业人员</a></li> 
-							<li><a href="category.jsp?categoryName=卫生专业技术人员" class="barlink">卫生专业技术人员</a></li>  
+							<li><a href="<%=cateurl[0]%>" class="barlink">工程技术人员</a></li> 
+							<li><a href="<%=cateurl[1]%>" class="barlink">科学研究人员</a></li> 
+							<li><a href="<%=cateurl[2]%>" class="barlink">教学人员</a></li> 
+							<li><a href="<%=cateurl[3]%>" class="barlink">金融业务人员</a></li> 
+							<li><a href="<%=cateurl[4]%>" class="barlink">经济业务人员</a></li> 
+							<li><a href="<%=cateurl[5]%>" class="barlink">办事人员和有关人员</a></li> 
+							<li><a href="<%=cateurl[6]%>" class="barlink">商业和服务业人员</a></li> 
+							<li><a href="<%=cateurl[7]%>" class="barlink">卫生专业技术人员</a></li>  
 						</ul> 
 					</li> 
 					<li class="dropdown"> 
@@ -179,10 +179,10 @@
 						我的主页<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-						<li><a href="myinfo.jsp">个人信息</a></li> 
-						<li><a href="markedjobs.jsp">职位收藏</a></li> 
-						<li><a href="guessYouLike.jsp">猜你喜欢</a></li> 
-						<li><a href="recommend.jsp">为你推荐</a></li> 
+						<li><a href="myInfo">个人信息</a></li> 
+						<li><a href="markedPositions">职位收藏</a></li> 
+						<li><a href="guessYourLike">猜你喜欢</a></li> 
+						<li><a href="recommend">为你推荐</a></li> 
 						</ul>  
 					</li>
 					<li><a href="#">合作伙伴</a></li> 

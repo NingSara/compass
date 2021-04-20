@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.compass.compass.bean.jobInfo.*" %>
+<%@ page import="com.compass.compass.bean.recommend.*" %>
+<%@ page import="com.compass.compass.bean.search.*" %>
+<%@ page import="com.compass.compass.bean.user.*" %>
+<%@ page import="com.compass.compass.bean.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -83,11 +89,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     
     <!--导航--> 
-	<div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
+	    <%!
+		User myuser;
+    	List< CategoryLink > catelist;
+		int strarr[]=new int[8];
+		String cateurl[]=new String[8];
+	%>
+	<%
+		myuser=(User)session.getAttribute("user");
+		catelist = (List<CategoryLink>) session.getAttribute("fixedCategories");
+		int ii=0;
+		for(Iterator i = catelist.iterator();i.hasNext(); ){
+			CategoryLink tempc=(CategoryLink) i.next();
+			strarr[ii] = tempc.getPositionNum() ;
+			cateurl[ii]=tempc.getUrl();
+			ii++;
+		}
+	%>
+    <div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
 			  
 			<div class="navbar-header">
-			<img src="./img/图标.png" width="180px"> 
+			<img src="/img/图标.png" width="180px"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
@@ -96,20 +119,20 @@
 			</div> 
 			<div class="collapse navbar-collapse navbar-right" id="navBar"> 
 				<ul class="nav navbar-nav"> 
-					<li><a href="index.jsp" class="barlink">首页</a></li>  
+					<li><a href="index" class="barlink">首页</a></li> 
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-							<li><a href="category.jsp?categoryName=工程技术人员" class="barlink">工程技术人员</a></li> 
-							<li><a href="category.jsp?categoryName=科学研究人员" class="barlink">科学研究人员</a></li> 
-							<li><a href="category.jsp?categoryName=教学人员" class="barlink">教学人员</a></li> 
-							<li><a href="category.jsp?categoryName=金融业务人员" class="barlink">金融业务人员</a></li> 
-							<li><a href="category.jsp?categoryName=经济业务人员" class="barlink">经济业务人员</a></li> 
-							<li><a href="category.jsp?categoryName=办事人员和有关人员" class="barlink">办事人员和有关人员</a></li> 
-							<li><a href="category.jsp?categoryName=商业和服务业人员" class="barlink">商业和服务业人员</a></li> 
-							<li><a href="category.jsp?categoryName=卫生专业技术人员" class="barlink">卫生专业技术人员</a></li>  
+							<li><a href="<%=cateurl[0]%>" class="barlink">工程技术人员</a></li> 
+							<li><a href="<%=cateurl[1]%>" class="barlink">科学研究人员</a></li> 
+							<li><a href="<%=cateurl[2]%>" class="barlink">教学人员</a></li> 
+							<li><a href="<%=cateurl[3]%>" class="barlink">金融业务人员</a></li> 
+							<li><a href="<%=cateurl[4]%>" class="barlink">经济业务人员</a></li> 
+							<li><a href="<%=cateurl[5]%>" class="barlink">办事人员和有关人员</a></li> 
+							<li><a href="<%=cateurl[6]%>" class="barlink">商业和服务业人员</a></li> 
+							<li><a href="<%=cateurl[7]%>" class="barlink">卫生专业技术人员</a></li>  
 						</ul> 
 					</li> 
 					<li class="dropdown"> 
@@ -117,11 +140,11 @@
 						我的主页<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-						<li><a href="myinfo.jsp">个人信息</a></li> 
-						<li><a href="markedjobs.jsp">职位收藏</a></li> 
-						<li><a href="guessYouLike.jsp">猜你喜欢</a></li> 
-						<li><a href="recommend.jsp">为你推荐</a></li> 
-						</ul> 
+						<li><a href="myInfo">个人信息</a></li> 
+						<li><a href="markedPositions">职位收藏</a></li> 
+						<li><a href="guessYourLike">猜你喜欢</a></li> 
+						<li><a href="recommend">为你推荐</a></li> 
+						</ul>  
 					</li>
 					<li><a href="#">合作伙伴</a></li> 
 					<li><a href="#">联系我们</a></li>
@@ -129,7 +152,11 @@
 						<div 
 						style=
 						"border-radius:25px;background-color:#26AE61;color:#fff;margin:10px 0px 0px 5px;height:30px;width:100px;padding:5px 20px 0px 20px">
-							<a href="login.jsp" class="loginbutton">登录/注册</a>
+							<%if(myuser!=null){%>
+							<a href="" class="loginbutton">您已登录</a>
+							<%}else{%>
+							<a href="login" class="loginbutton">登录/注册</a>
+							<%}%>
 						</div>
 					</li>
 				</ul> 

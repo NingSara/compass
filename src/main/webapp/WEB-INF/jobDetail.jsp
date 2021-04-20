@@ -100,23 +100,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 	<%!
 		User myuser;
+    	List< CategoryLink > catelist;
+		int strarr[]=new int[8];
+		String cateurl[]=new String[8];
 	%>
 	<%
 		myuser=(User)session.getAttribute("user");
+		catelist = (List<CategoryLink>) session.getAttribute("fixedCategories");
+		int ii=0;
+		for(Iterator i = catelist.iterator();i.hasNext(); ){
+			CategoryLink tempc=(CategoryLink) i.next();
+			strarr[ii] = tempc.getPositionNum() ;
+			cateurl[ii]=tempc.getUrl();
+			ii++;
+		}
 	%>
 	<%!
-	Position theposition;
+	Position position;
 	List< PositionBaseRecommendLink > similarlist;
 	%>
 	<%
-		theposition=(Position) request.getAttribute("position");
+		position=(Position) request.getAttribute("position");
 		similarlist=( List< PositionBaseRecommendLink >)request.getAttribute("positionBaseRecommends");
+		PositionBaseRecommendLink similararr[]=new PositionBaseRecommendLink[3];
+		ii=0;
+		for(Iterator i=similarlist.iterator();i.hasNext();){
+			similararr[ii]=(PositionBaseRecommendLink)i.next();
+		}
 	%>
     <!--导航-->
     <div class="navbar navbar-default navbar-fixed-top" style="background-color:white"> 
 		<div class="container">
+			  
 			<div class="navbar-header">
-			<img src="/img/图标.png" width="180px">
+			<img src="/img/图标.png" width="180px"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
@@ -125,37 +142,32 @@
 			</div> 
 			<div class="collapse navbar-collapse navbar-right" id="navBar"> 
 				<ul class="nav navbar-nav"> 
-					<li><a href="index.jsp" class="barlink">首页</a></li>  
+					<li><a href="index" class="barlink">首页</a></li> 
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle barlink" data-toggle="dropdown"> 
 							按类搜索<span class="caret"></span> 
 						</a> 
-						<ul class="dropdown-menu" role="menu">
-							
-							<li><a href="category.jsp?categoryName=工程技术人员" class="barlink">工程技术人员</a></li> 
-							<li><a href="category.jsp?categoryName=科学研究人员" class="barlink">科学研究人员</a></li> 
-							<li><a href="category.jsp?categoryName=教学人员" class="barlink">教学人员</a></li> 
-							<li><a href="category.jsp?categoryName=金融业务人员" class="barlink">金融业务人员</a></li> 
-							<li><a href="category.jsp?categoryName=经济业务人员" class="barlink">经济业务人员</a></li> 
-							<li><a href="category.jsp?categoryName=办事人员和有关人员" class="barlink">办事人员和有关人员</a></li> 
-							<li><a href="category.jsp?categoryName=商业和服务业人员" class="barlink">商业和服务业人员</a></li> 
-							<li><a href="category.jsp?categoryName=卫生专业技术人员" class="barlink">卫生专业技术人员</a></li>  
+						<ul class="dropdown-menu" role="menu"> 
+							<li><a href="<%=cateurl[0]%>" class="barlink">工程技术人员</a></li> 
+							<li><a href="<%=cateurl[1]%>" class="barlink">科学研究人员</a></li> 
+							<li><a href="<%=cateurl[2]%>" class="barlink">教学人员</a></li> 
+							<li><a href="<%=cateurl[3]%>" class="barlink">金融业务人员</a></li> 
+							<li><a href="<%=cateurl[4]%>" class="barlink">经济业务人员</a></li> 
+							<li><a href="<%=cateurl[5]%>" class="barlink">办事人员和有关人员</a></li> 
+							<li><a href="<%=cateurl[6]%>" class="barlink">商业和服务业人员</a></li> 
+							<li><a href="<%=cateurl[7]%>" class="barlink">卫生专业技术人员</a></li>  
 						</ul> 
-					</li>
-					<%
-						Position position = (Position) request.getAttribute("position");
-						
-					%>
+					</li> 
 					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 						我的主页<span class="caret"></span> 
 						</a> 
 						<ul class="dropdown-menu" role="menu"> 
-						<li><a href="myinfo.jsp">个人信息</a></li> 
-						<li><a href="markedjobs.jsp">职位收藏</a></li> 
-						<li><a href="guessYouLike.jsp">猜你喜欢</a></li> 
-						<li><a href="recommend.jsp">为你推荐</a></li> 
-						</ul> 
+						<li><a href="myInfo">个人信息</a></li> 
+						<li><a href="markedPositions">职位收藏</a></li> 
+						<li><a href="guessYourLike">猜你喜欢</a></li> 
+						<li><a href="recommend">为你推荐</a></li> 
+						</ul>  
 					</li>
 					<li><a href="#">合作伙伴</a></li> 
 					<li><a href="#">联系我们</a></li>
@@ -173,7 +185,8 @@
 				</ul> 
 			</div> 
 		</div> 
-	</div> 
+	</div>
+	 
     <div class="container bodyup" style="width:100%;margin-bottom:10px">
         <div class="row">
         	<div class="col-md-7 col-xs-6">
@@ -200,7 +213,7 @@
 						</div>
     				</div>
     			</div>
-    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
     			style="font-size:15px;color:#A9A9A9;">
     				<span class="glyphicon glyphicon-plane" style="color:#26AE61;"></span>&nbsp;&nbsp;
 					<%=position.getPlace()%><%--济南-高新区--%>
@@ -213,7 +226,7 @@
 						<%=position.getWage()%><%--薪资：10k-12k--%>
 					</div>
     			</div>
-    			<div class="col-md-2 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
+    			<div class="col-md-3 col-xs-9 col-xs-push-3 col-md-push-0 alignblock" 
     			style="font-size:15px;">
     				<span class="label label-warning" style="font-size:15px">&nbsp;&nbsp;<%=position.getType()%><%--校招--%>&nbsp;&nbsp;</span>
     			</div>
@@ -253,12 +266,6 @@
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
 					<%=position.getRequire()%>
-				<%--1、.熟悉常用的Java语言，有javaWeb项目开发经验。
-				2、熟练掌握Oracle、MySQL等数据库开发。
-3、熟练使用Hibernate、Spring等框架进行整合项目开发。
-4、能使用svn、 Maven等代码管理方式；
-5、具有规范化、标准化的代码编写习惯，撰写技术文档的能力；
-6、熟悉基本的软件开发流程，有良好的沟通能力和团队合作能力。--%>
     			</div>
     		</div>
     	</div>
@@ -285,15 +292,12 @@
     				<span class="glyphicon glyphicon-flag" style="color:rgb(77,173,245);height:40px;font-size: 30px"></span>
     			</div>
     			<div class="detailblock">
-    				<h3>薪资<span style="color:rgb(77,173,245);">福利</span></h3>
+    				<h3>相关<span style="color:rgb(77,173,245);">福利</span></h3>
     			</div>
     		</div>
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
-    			福利：<br>
 					<%=position.getJobWelfare()%>
-    			<br>薪资：<br>
-					<%=position.getWage()%>
     			</div>
     		</div>
     	</div>
@@ -359,20 +363,6 @@
     		<div class="col-md-12 col-xs-12" style="padding-left:70px;padding-top:20px">
     			<div style="color:#A9A9A9;font-size:17px">
 					<%=position.getCompanyIntroduction()%>
-    			<%--银联商务股份有限公司（简称：银联商务）
-    			是中国银联控股的，专门从事线下、互联网以及移动支付的综合支付与信息服务机构，
-    			成立于2002年12月，总部设在上海市浦东新区。
-    			银联商务是首批获得人民银行《支付业务许可证》的支付机构，也是人民银行确定的21家重点支付机构之一。
-    成立十五年以来，在中国人民银行领导下，在中国银联的指导下，
-    银联商务始终坚持“服务社会、方便大众”的理念，积极履行企业公民的社会责任，
-    致力于改善中国银行卡受理环境和电子支付环境，
-    竭诚为发卡机构、商户、企业和广大持卡人提供优质、高效、安全、规范的线下、互联网、移动支付服务、信息服务以及互联网金融服务。
-    银联商务建立了南到海南三沙市永兴岛、北抵黑龙江漠河，覆盖全国所有地级以上城市的服务网络，并加快向发达县镇乡等农村地区拓展，
-    在全国形成专业化、全方位的服务态势。截至2020年2月末，银联商务已在全国除台湾以外的所有省级行政区设立机构，实体服务网络覆盖全国所有的地级以上城市，
-    覆盖率达100%，全辖员工超万人，服务特约商户793.9万家；2019年受理各类交易127.3亿笔、15万亿元，是国内规模***的综合支付服务机构之一。 
-    2019年公司荣获“2019胡润中国新金融50强”、“中国智慧城市发展十周年领军企业”、
-    “2019创新互联网企业TOP100”、“2019中国金融机构金牌榜·金龙奖”年度***金融科技创新公司等众多奖项。--%>
-
     			</div>
     		</div>
     	</div>
@@ -390,7 +380,7 @@
 	
 	</div>
 	
-	
+	<%!PositionBaseRecommendLink similarprint; %>
 	<div style="width:100%;padding-top:20px;padding-bottom:30px;background-color:#F9FCFF;margin-top:50px">
 	<div class="container">
 		<h1 style="text-align:center">相似推荐</h1>
