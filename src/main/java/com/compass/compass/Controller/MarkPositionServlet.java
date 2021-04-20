@@ -17,7 +17,7 @@ public class MarkPositionServlet {
     @Autowired
     MarkPositionDao markPositionDao;
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/markPosition/{positionIndex}",method = RequestMethod.POST)
     public boolean addMark(@PathVariable("positionIndex") long positionIndex, @SessionAttribute User user){
 

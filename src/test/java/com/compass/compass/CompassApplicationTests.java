@@ -1,5 +1,8 @@
 package com.compass.compass;
 
+import com.compass.compass.Controller.recommend.RecommendServlet;
+import com.compass.compass.bean.jobInfo.PositionLink;
+import com.compass.compass.bean.user.User;
 import com.compass.compass.dao.DAO;
 import com.compass.compass.dao.UserDAO.UserDao;
 import com.compass.compass.dao.jobInfoDAO.CategoryDao;
@@ -30,6 +33,8 @@ class CompassApplicationTests {
     UserDao userDao;
     @Autowired
     QueryJobDao queryJobDao;
+    @Autowired
+    RecommendServlet recommendServlet;
 
     @Test
     void contextLoads() throws SQLException {
@@ -75,6 +80,11 @@ class CompassApplicationTests {
 
     @Test
     void testPositionQuery(){
-        System.out.println(queryJobDao.queryRecentUpdatePositions(10).toString());
+        System.out.println(queryJobDao.queryRecentUpdatePositions(10, PositionLink.class).toString());
+    }
+
+    @Test
+    void testRecommend(){
+        System.out.println(recommendServlet.guessYourLikeOfIndex(new User()));;
     }
 }

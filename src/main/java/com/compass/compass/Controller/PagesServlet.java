@@ -1,8 +1,8 @@
 package com.compass.compass.Controller;
 
-import com.compass.compass.Controller.recommend.RecommendServlet;
-import com.compass.compass.bean.jobInfo.JobInfo;
+import com.compass.compass.Controller.recommend.RecommendServerProvider;
 import com.compass.compass.bean.jobInfo.Position;
+import com.compass.compass.bean.jobInfo.PositionLink;
 import com.compass.compass.bean.user.User;
 import com.compass.compass.dao.jobInfoDAO.CategoryDao;
 import com.compass.compass.dao.jobInfoDAO.QueryJobDao;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class PagesServlet {
     @Autowired
-    RecommendServlet recommendServlet;
+    RecommendServerProvider recommendServerProvider;
     @Autowired
     CategoryServlet categoryServlet;
     @Autowired
@@ -35,45 +35,24 @@ public class PagesServlet {
         //从dao或者其他地方获取系统中的工作的分类，这里的分类应该是position的分类
 //        model.addAttribute("categories", categoryDao.queryMostNCategories(10));
         //TODO 固定的一些类别，可能需要每个页面都查询一个，所以放在session里，每次访问index时更新
-
         session.setAttribute("fixedCategories", categoryDao.queryFixedCategories());
 
         //从dao获取最近发布的招聘信息推荐,（要不要也加个热门推荐）
-        model.addAttribute("recentUpdatePositions", queryJobDao.queryRecentUpdatePositions(10));
+        model.addAttribute("recentUpdatePositions", queryJobDao.queryRecentUpdatePositions(10, PositionLink.class));
         //判断是否为登录状态，向RecommendServlet请求推荐
         if (user != null){
-            model.addAttribute("guessYourLike", recommendServlet.guessYourLikeOfIndex(user));
-            model.addAttribute("recommendForYou",recommendServlet.recommendForYouOfIndex(user));
+            model.addAttribute("guessYourLike", recommendServerProvider.guessYourLikeOfIndex(user));
+            model.addAttribute("recommendForYou", recommendServerProvider.recommendForYouOfIndex(user));
         }
         return "index.jsp";
     }
 
     @RequestMapping(value = "/positionInfo/{positionIndex}",method = RequestMethod.GET)
     public String positionInfoPage(Model model, @PathVariable(name = "positionIndex") Long positionIndex){
-        if (positionIndex == 0){
-            //如果为0 就用一些随便set
-        }
         Position position = queryJobDao.queryPositionByIndex(positionIndex);
         model.addAttribute("position",position);
-        model.addAttribute("positionBaseRecommends", recommendServlet.similarPositionRecommends(position));
+        model.addAttribute("positionBaseRecommends", recommendServerProvider.similarPositionBelowRecommends(position));
         return "jobDetail.jsp";
     }
 
-    @RequestMapping("/guessYourLike")
-    public String getGuessYourLikePage(Model model,@SessionAttribute(required = false) User user){
-        model.addAttribute("guessYourLike", recommendServlet.guessYourLikeOfIndex(user));
-        return "guessYouLike.jsp";
-    }
-
-    @RequestMapping("/recommend")
-    public String recommendPositionsPage(){
-
-
-        return "recommend.jsp";
-    }
-
-    @RequestMapping("/similarPositions")
-    public String similarPositionsPage(){
-        return "similarJobs.jsp";
-    }
 }

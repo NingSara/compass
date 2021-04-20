@@ -1,45 +1,59 @@
 package com.compass.compass.Controller.recommend;
 
-import com.compass.compass.bean.jobInfo.JobInfo;
-import com.compass.compass.bean.jobInfo.Position;
-import com.compass.compass.bean.recommend.PositionBaseRecommendLink;
-import com.compass.compass.bean.recommend.UserBaseRecommendLink;
 import com.compass.compass.bean.user.User;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
-import java.util.List;
+@Controller
+public class RecommendServlet {
 
-/**
- * @author cn
- */
-public interface RecommendServlet {
-    //按照名字，理应是controller，但是由于可能没有对请求响应，所以暂时只是一个component
+    @Autowired
+    RecommendServerProvider recommendServerProvider;
 
-    //TODO 这里也要按页查询
-    /**
-     * 主页中根据用户喜好推荐岗位
-     * 至少返回6个
-     * @param user
-     * @return
-     */
-    public List<UserBaseRecommendLink> guessYourLikeOfIndex(User user);
-
-//    public List<UserBaseRecommendLink> guessYourLike
-
-    /**
-     * 主页中根据用户特点，能力推荐岗位
-     * 至少返回4
-     * @param user
-     * @return
-     */
-    public List<UserBaseRecommendLink> recommendForYouOfIndex(User user);
+    @RequestMapping("/guessYourLike")
+    public String getGuessYourLikePage(Model model, @SessionAttribute(required = false) User user){
+        model.addAttribute("guessYourLike", recommendServerProvider.guessYourLike(user,0,10));
+        return "guessYouLike.jsp";
+    }
 
     /**
      *
-     * @param relatePositionIndex
+     * @param model
+     * @param user
+     * @param pageIndex from 1
      * @return
      */
-    public List<PositionBaseRecommendLink> similarPositionRecommends(long relatePositionIndex);
+    @RequestMapping("/guessYourLike/{pageIndex}")
+    public String getGuessYourLikePage(Model model, @SessionAttribute(required = false) User user,@PathVariable int pageIndex){
+        model.addAttribute("guessYourLike", recommendServerProvider.guessYourLike(user,10 * (pageIndex - 1),10));
+        return "guessYouLike.jsp";
+    }
 
-    public List<PositionBaseRecommendLink> similarPositionRecommends(Position position);
+    @RequestMapping("/recommend")
+    public String recommendPositionsPage(Model model,@SessionAttribute User user){
+        model.addAttribute("recommendForYou", recommendServerProvider.recommendForYou(user,0,10));
+        return "recommend.jsp";
+    }
+
+    @RequestMapping("/recommend/{pageIndex}")
+    public String recommendPositionsPage(Model model,@SessionAttribute User user,@PathVariable int pageIndex){
+        model.addAttribute("recommendForYou", recommendServerProvider.recommendForYou(user,10 * (pageIndex - 1),10));
+        return "recommend.jsp";
+    }
+
+    @RequestMapping("/similarPositions/{positionIndex}")
+    public String similarPositionsPage(Model model,@SessionAttribute User user,@PathVariable("positionIndex") long positionIndex){
+        model.addAttribute("positionBaseRecommends", recommendServerProvider.similarPositionRecommends(positionIndex,0,10));
+        return "similarJobs.jsp";
+    }
+
+    @RequestMapping("/similarPositions/{positionIndex}/{pageIndex}")
+    public String similarPositionsPage(Model model,@SessionAttribute User user,@PathVariable("positionIndex") long positionIndex,@PathVariable int pageIndex){
+        model.addAttribute("positionBaseRecommends", recommendServerProvider.similarPositionRecommends(positionIndex,10 * (pageIndex - 1),10));
+        return "similarJobs.jsp";
+    }
 }

@@ -1,5 +1,6 @@
 package com.compass.compass.dao.jobInfoDAO;
 
+import com.compass.compass.bean.Link;
 import com.compass.compass.bean.MarkedPosition;
 import com.compass.compass.bean.jobInfo.*;
 import com.compass.compass.dao.DAO;
@@ -111,8 +112,8 @@ public class QueryJobDao extends DAO {
      * @return
      * @author cn
      */
-    public List<PositionLink> queryRecentUpdatePositions(int n){
-        return queryNextNPositions(n,0);
+    public <T extends PositionLink> List<T> queryRecentUpdatePositions(int n,Class<T> tClass){
+        return queryNextNPositions(n,0,tClass);
     }
 
 
@@ -123,22 +124,22 @@ public class QueryJobDao extends DAO {
      * @author cn
      */
     @Transactional
-    public List<PositionLink> queryNextNPositions(int positionNum,int fromIndex){
+    public <T extends PositionLink> List<T> queryNextNPositions(int positionNum,int fromIndex,Class<T> tClass){
         String querySql = PositionLinkRowMapper.sql + "ORDER BY `index` desc LIMIT ?,?";
 
-        return jdbcTemplate.query(querySql,new PositionLinkRowMapper(),fromIndex,positionNum);
+        return jdbcTemplate.query(querySql,new PositionLinkRowMapper(tClass),fromIndex,positionNum);
     }
 
     public List<PositionLink> queryPositionsOfCategory(String categoryName){
         String sql = PositionLinkRowMapper.sql + "WHERE positions.type = ? ORDER BY `index` DESC";
 
-        return jdbcTemplate.query(sql, new PositionLinkRowMapper(),categoryName);
+        return jdbcTemplate.query(sql, new PositionLinkRowMapper(PositionLink.class),categoryName);
     }
 
     public List<PositionLink> queryPositionsOfCategory(String categoryName,int fromIndex,int num){
         String sql = PositionLinkRowMapper.sql + "WHERE positions.type = ? ORDER BY `index` DESC LIMIT ?,?";
 
-        return jdbcTemplate.query(sql, new PositionLinkRowMapper(),categoryName,fromIndex,num);
+        return jdbcTemplate.query(sql, new PositionLinkRowMapper(PositionLink.class),categoryName,fromIndex,num);
     }
 
     /**
@@ -191,14 +192,31 @@ class CompletePositionRowMapper implements RowMapper<Position>{
     }
 }
 
-class PositionLinkRowMapper implements RowMapper<PositionLink>{
+/**
+ * 支持泛型的查询，因为对于PositionLink 及其子类来说，需要从数据库中取的内容都是相同的，所以
+ * 可以在这里直接new对应的对象，并当作PositionLink来给他们赋值
+ * 为了实例化对象则需要传入class
+ * @param <T>
+ */
+class PositionLinkRowMapper<T extends PositionLink> implements RowMapper<PositionLink>{
+    Class<T> theClass;
     static String sql = "SELECT * FROM(" +
             "SELECT `index`, job_id, name, type, degree, place, wage, quantity FROM positions) positions " +
             "LEFT OUTER JOIN (SELECT id,title,type,begin_date,end_date,company_name FROM jobs) jobs ON jobs.id = positions.job_id ";
+    public PositionLinkRowMapper(Class theClass){
+        this.theClass = theClass;
+    }
     @Override
-    public PositionLink mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public T mapRow(ResultSet rs, int rowNum) throws SQLException {
         long jobId = rs.getLong("job_id");
-        PositionLink positionLink = new PositionLink();
+        T positionLink = null;
+        try {
+            positionLink = theClass.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         positionLink.setPositionIndex(rs.getLong("index"));
         positionLink.setJobId(jobId);
         positionLink.setName(rs.getString("name"));
